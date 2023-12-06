@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage1> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'sEMSUL coba ngepush',
+                  'assets kategori',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
