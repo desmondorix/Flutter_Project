@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage1> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'ini push jopan pertama',
+                  'shere coba ngepush',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
