@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage1> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'cintia coba ngepush',
+                  'assets kategori',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage1> {
                     minimumSize: Size(200, 50),
                   ),
                   onPressed: () {
-                    // TODO: Pindah ke halaman regist
+                    // TODO: Pindah ke halaman register
                     Navigator.push(
                       context,
                       MaterialPageRoute(
