@@ -4,10 +4,10 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -88,18 +88,15 @@ class _RegisterPageState extends State<RegisterPage> {
               size: 70,
               color: Colors.black,
             ),
-            
-            const SizedBox(
-              height: 10,
-            ),
             TextButton(
               style: TextButton.styleFrom(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                backgroundColor: Colors.grey[400],
-                foregroundColor: Colors.black,
-                minimumSize: const Size(250, 50),
-              ),
+                  shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+                  backgroundColor: Colors.grey[400],
+                  foregroundColor: Colors.black,
+                  minimumSize: const Size(250, 50),
+                  shadowColor: Colors.black
+                  ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -108,11 +105,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 );
               },
-              child: const Text(
-                'REGISTER',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+              child: const Text('LOGIN',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
+            
+            const SizedBox(
+              height: 10,
+            ),
+            
           ],
         ),
       ),

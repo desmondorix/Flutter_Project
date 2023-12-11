@@ -1,121 +1,143 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/pages/home_page.dart';
+import 'package:marbel/widgets/custom_textfield_home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<LoginPage> {
+  TextEditingController namaController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                const SizedBox(
-                  height: 1,
-                ),
-                Container(
-                    width: size.width,
-                    height: size.height / 1.4,
-                    child: const Image(
-                        fit: BoxFit.fill,
-                        image: AssetImage("assets/bg_marbel_login.png"))),
-                Positioned(
-                  top: 60,
-                  child: Container(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  const SizedBox(
+                    height: 1,
+                  ),
+                  Container(
+                      width: size.width,
+                      height: size.height / 1.4,
+                      child: const Image(
+                          fit: BoxFit.fill,
+                          image: AssetImage("assets/bg_marbel_login.png"))),
+                  Positioned(
+                    top: 60,
+                    child: Container(
+                      width: 80,
+                      height: 80,
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              spreadRadius: 3,
+                              blurRadius: 3,
+                            )
+                          ]),
+                      child: const Image(
+                          fit: BoxFit.fill,
+                          image: AssetImage("assets/logo_marbel.png")),
+                    ),
+                  ),
+                  Positioned(
+                    top: 180,
+                    child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: Colors.white.withOpacity(0.7),
+                        ),
+                        child: const Text(
+                          " Welcome to Marbel ",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.w900),
+                        )),
+                  ),
+                  Positioned(
+                    top: 223,
+                    child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(5)),
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                        child: const Text(
+                          "  Mari Belajar edisi Budaya Indonesia  ",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white),
+                        )),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const HomePage();
+                          },
+                        ));
+                      },
+                      icon: const Icon(Icons.chevron_left_rounded, size: 40)),
+                  const Icon(
+                    Icons.person_rounded,
+                    size: 40,
+                    color: Colors.black,
+                  ),
+                  const SizedBox(width: 15),
+                  const Text('LOGIN',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                  const SizedBox(
+                    width: 60,
+                  )
+                ],
+              ),
+              CustomTextFieldHome(label: "Nama", controller: namaController),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    child: const Row(
+                      children: [
+                        Text("Masuk",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold)),
+                        Icon(Icons.login, size: 30)
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
                     width: 80,
-                    height: 80,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            spreadRadius: 3,
-                            blurRadius: 3,
-                          )
-                        ]),
-                    child: const Image(
-                        fit: BoxFit.fill,
-                        image: AssetImage("assets/logo_marbel.png")),
                   ),
-                ),
-                Positioned(
-                  top: 180,
-                  child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        color: Colors.white.withOpacity(0.7),
-                      ),
-                      child: const Text(
-                        " Welcome to Marbel ",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w900),
-                      )),
-                ),
-                Positioned(
-                  top: 223,
-                  child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
-                        color: Colors.black.withOpacity(0.5),
-                      ),
-                      child: const Text(
-                        "  Mari Belajar edisi Budaya Indonesia  ",
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      )),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Icon(
-              Icons.person_rounded,
-              size: 70,
-              color: Colors.black,
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                  shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-                  backgroundColor: Colors.grey[400],
-                  foregroundColor: Colors.black,
-                  minimumSize: const Size(250, 50),
-                  shadowColor: Colors.black
-                  ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
-                  ),
-                );
-              },
-              child: const Text('LOGIN',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            ),
-            
-            const SizedBox(
-              height: 10,
-            ),
-            
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
