@@ -120,22 +120,28 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               CustomTextFieldHome(label: "Nama", controller: namaController),
               const SizedBox(height: 10),
-              DropdownButton(
-                hint: const Text("Pilih Kelas"),
-                items: const [
-                  DropdownMenuItem(value: "Kelas 1", child: Text("Kelas 1")),
-                  DropdownMenuItem(value: "Kelas 2", child: Text("Kelas 2")),
-                  DropdownMenuItem(value: "Kelas 3", child: Text("Kelas 3")),
-                  DropdownMenuItem(value: "Kelas 4", child: Text("Kelas 4")),
-                  DropdownMenuItem(value: "Kelas 5", child: Text("Kelas 5")),
-                  DropdownMenuItem(value: "Kelas 6", child: Text("Kelas 6")),
-                ],
-                value: _dropdownValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    _dropdownValue = newValue as String;
-                  });
-                },
+              Container(
+                width: 200,
+                height: 50,
+                child: DropdownButton(
+                  hint: const Text("Pilih Kelas"),
+                  borderRadius: const BorderRadius.all(Radius.circular(22)),
+                  items: const [
+                    DropdownMenuItem(value: "Kelas 1", child: Text("Kelas 1")),
+                    DropdownMenuItem(value: "Kelas 2", child: Text("Kelas 2")),
+                    DropdownMenuItem(value: "Kelas 3", child: Text("Kelas 3")),
+                    DropdownMenuItem(value: "Kelas 4", child: Text("Kelas 4")),
+                    DropdownMenuItem(value: "Kelas 5", child: Text("Kelas 5")),
+                    DropdownMenuItem(value: "Kelas 6", child: Text("Kelas 6")),
+                  ],
+                  value: _dropdownValue,
+                  isExpanded: true,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _dropdownValue = newValue as String;
+                    });
+                  },
+                ),
               ),
               const SizedBox(height: 5),
               Row(
