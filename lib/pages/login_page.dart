@@ -134,7 +134,7 @@ class _RegisterPageState extends State<LoginPage> {
                     ),)
                   ),
                   const SizedBox(
-                    width: 80,
+                    width: 60,
                   ),
                 ],
               )
