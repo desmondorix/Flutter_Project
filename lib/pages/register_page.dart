@@ -121,18 +121,33 @@ class _RegisterPageState extends State<RegisterPage> {
               CustomTextFieldHome(label: "Nama", controller: namaController),
               const SizedBox(height: 10),
               Container(
-                width: 200,
+                width: 150,
                 height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(22)),
+                    color: Colors.grey[300],
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Colors.black54,
+                          blurRadius: 3,
+                          offset: Offset(3, 3))
+                    ]),
                 child: DropdownButton(
-                  hint: const Text("Pilih Kelas"),
+                  hint: const Text("   Pilih Kelas"),
                   borderRadius: const BorderRadius.all(Radius.circular(22)),
                   items: const [
-                    DropdownMenuItem(value: "Kelas 1", child: Text("Kelas 1")),
-                    DropdownMenuItem(value: "Kelas 2", child: Text("Kelas 2")),
-                    DropdownMenuItem(value: "Kelas 3", child: Text("Kelas 3")),
-                    DropdownMenuItem(value: "Kelas 4", child: Text("Kelas 4")),
-                    DropdownMenuItem(value: "Kelas 5", child: Text("Kelas 5")),
-                    DropdownMenuItem(value: "Kelas 6", child: Text("Kelas 6")),
+                    DropdownMenuItem(
+                        value: "Kelas 1", child: Text("  Kelas 1")),
+                    DropdownMenuItem(
+                        value: "Kelas 2", child: Text("  Kelas 2")),
+                    DropdownMenuItem(
+                        value: "Kelas 3", child: Text("  Kelas 3")),
+                    DropdownMenuItem(
+                        value: "Kelas 4", child: Text("  Kelas 4")),
+                    DropdownMenuItem(
+                        value: "Kelas 5", child: Text("  Kelas 5")),
+                    DropdownMenuItem(
+                        value: "Kelas 6", child: Text("  Kelas 6")),
                   ],
                   value: _dropdownValue,
                   isExpanded: true,
