@@ -174,7 +174,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
             child: Container(
               width: size.width,
               height: 70,
-              color: Color(0xFF572D15),
+              color: Color(0xFF602c2c),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

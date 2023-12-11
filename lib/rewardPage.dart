@@ -116,7 +116,7 @@ class Sertif extends StatelessWidget {
                 child: Container(
                   width: size.width,
                   height: 125,
-                  color: Color(0xFF572D15),
+                  color: Color(0xFF602c2c),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
