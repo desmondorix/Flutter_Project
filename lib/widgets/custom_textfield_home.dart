@@ -12,6 +12,7 @@ class CustomTextFieldHome extends StatelessWidget {
     Widget build(BuildContext context) {
       return Container(
         width: 250,
+        height: 50,
         decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(22)),
             boxShadow: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/home_page.dart';
+import 'package:marbel/pages/main_page.dart';
 import 'package:marbel/widgets/custom_textfield_home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -119,14 +120,18 @@ class _RegisterPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    child: const Row(
+                    child: TextButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return const MainPage();
+                      },));
+                    }, child: const Row(
                       children: [
                         Text("Masuk",
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold)),
-                        Icon(Icons.login, size: 30)
+                                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
+                        Icon(Icons.login, size: 30, color: Colors.black,)
                       ],
-                    ),
+                    ),)
                   ),
                   const SizedBox(
                     width: 80,
