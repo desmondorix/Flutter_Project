@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marbel/main.dart';
-import 'package:marbel/scoreboardPage.dart';
+import 'package:marbel/pages/scoreboardPage.dart';
 
 class Sertif extends StatelessWidget {
   final String nama;
