@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marbel/pages/detail.dart';
 
 class Senjata extends StatefulWidget {
   const Senjata({super.key});
@@ -48,48 +49,59 @@ class _SenjataState extends State<Senjata> {
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: 6,
               itemBuilder: (BuildContext context, index) {
-                return SizedBox(
-                    width: size.width,
-                    child: Card(
-                      elevation: 10,
-                      color: Color(0xFFCF9C6F),
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                      margin: EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(20),
-                            ),
-                            child: Image.network(
-                              "https://akcdn.detik.net.id/community/media/visual/2023/09/14/keris-siginjai_169.png?w=700&q=90",
-                              width: size.width,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.topCenter,
-                            margin: const EdgeInsets.only(top: 8),
-                            child: Text(
-                              "nama_daerah",
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.topCenter,
-                            margin: const EdgeInsets.only(top: 4),
-                            child: Text(
-                              "Asal daerah",
-                              style: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Detail(),
                       ),
-                    ));
+                    );
+                  },
+                  child: SizedBox(
+                      width: size.width,
+                      child: Card(
+                        elevation: 10,
+                        color: Color(0xFFCF9C6F),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              child: Image.network(
+                                "https://akcdn.detik.net.id/community/media/visual/2023/09/14/keris-siginjai_169.png?w=700&q=90",
+                                width: size.width,
+                                height: 100,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topCenter,
+                              margin: const EdgeInsets.only(top: 8),
+                              child: Text(
+                                "nama_daerah",
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topCenter,
+                              margin: const EdgeInsets.only(top: 4),
+                              child: Text(
+                                "Asal daerah",
+                                style: const TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                );
               }),
         ),
       ),
