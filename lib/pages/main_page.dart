@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/pages/budaya_page.dart';
 import 'package:marbel/pages/login_page.dart';
 import 'package:marbel/pages/register_page.dart';
+import 'package:marbel/pages/test.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -97,7 +99,7 @@ Widget build(BuildContext context) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
+                    builder: (context) => const BudayaPage(),
                   ),
                 );
               },
