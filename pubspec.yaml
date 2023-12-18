@@ -36,8 +36,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  google_fonts: ^6.1.0
-  dio: ^5.4.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +64,7 @@ flutter:
   assets:
   - assets/bg_marbel_login.png
   - assets/logo_marbel.png
+  - assets/logo_main.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
