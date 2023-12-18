@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marbel/main.dart';
 import 'package:marbel/pages/dummyscoreboard.dart';
 
-class Sertif extends StatelessWidget {
-  final String nama;
 
-  Sertif({required this.nama});
+class Sertif extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
