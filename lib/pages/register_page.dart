@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/home_page.dart';
 import 'package:marbel/pages/main_page.dart';
+import 'package:marbel/services.dart';
 import 'package:marbel/widgets/custom_textfield_home.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -14,37 +17,10 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController username=TextEditingController();
-  TextEditingController kelas=TextEditingController();
+  TextEditingController usernameController =TextEditingController();
+  TextEditingController kelasController =TextEditingController();
 
-  Future<void> insertrecord() async{
-    if(username.text !="" || kelas.text !="" ){
-      String uri = "http://10.0.2.2:8080/study_flutter/insert_record.php";
-      try{
-        var res=await http.post(Uri.parse(uri), body: {
-          "username":username.text,
-          "kelas":kelas.text,
-        });
-        var response = jsonDecode(res.body);
-        if(response["success"]=="true"){
-          print("Record Inserted");
-          username.text = "";
-          kelas.text = "";
-        } else {
-          print("some issue");
-        }
-      } catch(e){
-        print(e);
-      }
-    } else {
-      print("please fill all fields");
-    }
-  }
-  TextEditingController usernameController = TextEditingController();
   String? _dropdownValue;
-  String? selectedClass;
-  List<String> classes = ["Kelas 1", "Kelas 2", "Kelas 3", "Kelas 4", "Kelas 5", "Kelas 6"];
-
 
   @override
   Widget build(BuildContext context) {
@@ -187,6 +163,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     setState(() {
                       _dropdownValue = newValue as String;
                     });
+                      kelasController = newValue.toString() as TextEditingController;
                   },
                 ),
               ),
@@ -196,13 +173,38 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   Container(
                     child: TextButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return const MainPage();
-                          },
-                        ));
-                      },
+                      onPressed: () async {
+                      // setState(() {
+                      //   isLoading = true;
+                      // });
+                      String username = usernameController.text.trim();
+                      String kelas = kelasController.toString();
+                      try {
+                            Map? response =
+                                await Services.register(username : username, kelas : kelas);
+                                // setState(() {
+                                //   isLoading = false;
+                                // });
+                            if (mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(response!['message'])));
+                              Navigator.pop(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const MainPage(),
+                                  ));
+                            }
+                          } catch (e) {
+                            // setState(() {
+                            //   isLoading = false;
+                            // });
+                            if (mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(e.toString())));
+                            }
+                          }
+                    },
                       child: const Row(
                         children: [
                           Text("Masuk",
