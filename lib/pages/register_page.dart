@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:marbel/pages/home_page.dart';
 import 'package:marbel/pages/main_page.dart';
 import 'package:marbel/widgets/custom_textfield_home.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -11,7 +14,33 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController namaController = TextEditingController();
+  TextEditingController username=TextEditingController();
+  TextEditingController kelas=TextEditingController();
+
+  Future<void> insertrecord() async{
+    if(username.text !="" || kelas.text !="" ){
+      String uri = "http://10.0.2.2:8080/study_flutter/insert_record.php";
+      try{
+        var res=await http.post(Uri.parse(uri), body: {
+          "username":username.text,
+          "kelas":kelas.text,
+        });
+        var response = jsonDecode(res.body);
+        if(response["success"]=="true"){
+          print("Record Inserted");
+          username.text = "";
+          kelas.text = "";
+        } else {
+          print("some issue");
+        }
+      } catch(e){
+        print(e);
+      }
+    } else {
+      print("please fill all fields");
+    }
+  }
+  TextEditingController usernameController = TextEditingController();
   String? _dropdownValue;
 
   @override
@@ -118,7 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
-              CustomTextFieldHome(label: "Nama", controller: namaController),
+              CustomTextFieldHome(label: "Nama", controller: usernameController),
               const SizedBox(height: 10),
               Container(
                 width: 250,
