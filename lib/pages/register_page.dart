@@ -13,6 +13,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   TextEditingController namaController = TextEditingController();
   String? _dropdownValue;
+  String? selectedClass;
+  List<String> classes = ["Kelas 1", "Kelas 2", "Kelas 3", "Kelas 4", "Kelas 5", "Kelas 6"];
+
 
   @override
   Widget build(BuildContext context) {
