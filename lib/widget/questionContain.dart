@@ -28,7 +28,7 @@ Widget getQuestionContainer(int questionNumber, BuildContext context) {
               ),
             ),
             Positioned(
-              bottom: 8,
+              bottom: 3,
               left: 23,
               right: 23,
               child: Text(

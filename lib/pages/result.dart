@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/pages/dummyscoreboard.dart';
 
 class ResultScreen extends StatelessWidget {
   final Map<int, String> answers;
@@ -11,7 +12,7 @@ class ResultScreen extends StatelessWidget {
     Map<int, String> correctAnswers = {
       1: 'London',
       2: 'Mars',
-      3: 'elphant',
+      3: 'elephant', // Correct the spelling of 'elephant'
       4: '1492',
       5: 'Garlic',
     };
@@ -60,6 +61,39 @@ class ResultScreen extends StatelessWidget {
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
                         color: Colors.white, // Sesuaikan warna teks dengan background
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20), // Add some space between the score and the button
+                  Container(
+                    margin: EdgeInsets.only(top: 240.0),
+                    width: 300, // Set the width of the button
+                    height: 100, // Set the height of the button
+                    alignment: Alignment.center, // Align the button content to the center
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Navigate to the next page (replace 'NextPage' with the actual page name)
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ScoreBoard()), // Ganti dengan nama kelas halaman berikutnya Anda
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFF572D15), // Specify the button color
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(35.0), // Set the border radius
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Ambil \nSertifikat',
+                          textAlign: TextAlign.center, // Center the text horizontally
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
