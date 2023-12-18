@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/widgets/custom_button_home.dart';
 import 'package:marbel/pages/login_page.dart';
 import 'package:marbel/pages/register_page.dart';
 
@@ -85,51 +86,27 @@ class HomePage extends StatelessWidget {
               size: 70,
               color: Colors.black,
             ),
-            TextButton(
-              style: TextButton.styleFrom(
-                  shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-                  backgroundColor: Colors.grey[400],
-                  foregroundColor: Colors.black,
-                  minimumSize: const Size(250, 50),
-                  shadowColor: Colors.black
-                  ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
-                  ),
-                );
-              },
-              child: const Text('LOGIN',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            ),
-            
+            CustomButtonHome(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const LoginPage();
+                    },
+                  ));
+                },
+                buttonTextHome: "LOGIN"),
             const SizedBox(
               height: 10,
             ),
-            TextButton(
-              style: TextButton.styleFrom(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                backgroundColor: Colors.grey[400],
-                foregroundColor: Colors.black,
-                minimumSize: const Size(250, 50),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const RegisterPage(),
-                  ),
-                );
-              },
-              child: const Text(
-                'REGISTER',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
+            CustomButtonHome(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const RegisterPage();
+                    },
+                  ));
+                },
+                buttonTextHome: "REGISTER"),
           ],
         ),
       ),
