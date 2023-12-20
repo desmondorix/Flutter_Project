@@ -214,40 +214,6 @@ class _QuizBodyState extends State<QuizBody> {
   }
 
 
-  List<String> getQuestionOptions(int questionNumber) {
-    switch (questionNumber) {
-      case 1:
-        return ['Paris', 'London', 'Berlin', 'Madrid'];
-      case 2:
-        return ['Mars', 'Venus', 'Jupiter', 'Saturn'];
-      case 3:
-        return ['Elephant', 'Blue Whale', 'Giraffe', 'Hippopotamus'];
-      case 4:
-        return ['1492', '1607', '1776', '1812'];
-      case 5:
-        return ['Avocado', 'Tomato', 'Onion', 'Garlic'];
-      default:
-        return [];
-    }
-  }
-
-  String getQuestionText(int questionNumber) {
-    switch (questionNumber) {
-      case 1:
-        return 'What is the capital of France?';
-      case 2:
-        return 'Which planet is known as the Red Planet?';
-      case 3:
-        return 'What is the largest mammal on Earth?';
-      case 4:
-        return 'In which year did Christopher Columbus reach the Americas?';
-      case 5:
-        return 'What is the main ingredient in guacamole?';
-      default:
-        return '';
-    }
-  }
-
   void setSelectedOption(String option) {
     setState(() {
       answers[currentQuestion] = option;

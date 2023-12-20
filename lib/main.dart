@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/soal.dart';
-import 'package:marbel/pages/soal.dart';
+
 
 void main() {
   runApp(const MyApp());
