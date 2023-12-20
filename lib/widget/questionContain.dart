@@ -52,15 +52,15 @@ String getQuestionImageUrl(int questionNumber) {
   // Provide image URLs based on the question number
   switch (questionNumber) {
     case 1:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'https://cdn.idntimes.com/content-images/post/20220917/download-3fe6f95cbbd0783306717b8176109a2f_600x400.jpg';
     case 2:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'https://www.dapurkobe.co.id/wp-content/uploads/kerak-telor.jpg';
     case 3:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'https://seringjalan.com/wp-content/uploads/2020/06/Baju-Seting-Bangka-Belitung-830x1024.jpg';
     case 4:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnH7VSN0R5d-dP5UsZbntcmxcPbTqwYG6M2vzkN4CW6ZIR1ffVmP5eGuCUkymaCKInBQE&usqp=CAU';
     case 5:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'https://pariwisataindonesia.id/wp-content/uploads/2020/11/senjata-badik-Badik-Raja-foto-by-asyraafahmadicom.jpg';
   // ... Add URLs for other questions as needed
     default:
       return '';
@@ -70,15 +70,15 @@ String getQuestionImageUrl(int questionNumber) {
 String getQuestionText(int questionNumber) {
   switch (questionNumber) {
     case 1:
-      return 'What is the capital of France?';
+      return 'Dari manakah asal rumah daerah pada gambar di atas?';
     case 2:
-      return 'Which planet is known as the Red Planet?';
+      return 'Kerak Telor adalah makanan yang berasal dari daerah?';
     case 3:
-      return 'What is the largest mammal on Earth?';
+      return 'Pakaian adat gambar di atas \n berasal dari mana?';
     case 4:
-      return 'In which year did Christopher Columbus reach the Americas?';
+      return 'Senjata Diatas \n Berasal dari daerah?';
     case 5:
-      return 'What is the main ingredient in guacamole?';
+      return 'Apa nama \n senjata di atas ?';
     default:
       return '';
   }

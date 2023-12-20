@@ -33,6 +33,7 @@ class ContainerOption extends StatelessWidget {
     );
   }
 
+
   Color getColor(String? color) {
     switch (color) {
       case 'Red':
@@ -46,5 +47,23 @@ class ContainerOption extends StatelessWidget {
       default:
         return Colors.grey;
     }
+  }
+
+}
+
+List<String> getQuestionOptions(int questionNumber) {
+  switch (questionNumber) {
+    case 1:
+      return ['Padang', 'Aceh', 'Jakarta', 'Papua'];
+    case 2:
+      return ['Palembang', 'Aceh', 'Jakarta', 'NTT'];
+    case 3:
+      return ['Bangka Belitung', 'Sumatra Utara', 'Riau', 'Aceh'];
+    case 4:
+      return ['Palembang', 'Aceh', 'Jawa Barat', 'NTT'];
+    case 5:
+      return ['Badik Raja', 'Golok', 'Beladau', 'Keris'];
+    default:
+      return [];
   }
 }
