@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/home_page.dart';
 import 'package:marbel/pages/main_page.dart';
+import 'package:marbel/services.dart';
 import 'package:marbel/widgets/custom_textfield_home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<LoginPage> {
-  TextEditingController namaController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -114,17 +115,34 @@ class _RegisterPageState extends State<LoginPage> {
                   )
                 ],
               ),
-              CustomTextFieldHome(label: "Nama", controller: namaController),
+              CustomTextFieldHome(label: "Nama", controller: usernameController),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    child: TextButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return const MainPage();
-                      },));
-                    }, child: const Row(
+                    child: TextButton(onPressed: () async {
+                        String username = usernameController.text.trim();
+                        try {
+                          Map? response = await Services.login(
+                              username: username);
+                          if (mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response!['message'])));
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const MainPage(),
+                                ));
+                          }
+                        } catch (e) {
+                          if (mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(e.toString())));
+                          }
+                        }
+                      }, child: const Row(
                       children: [
                         Text("Masuk",
                             style: TextStyle(
