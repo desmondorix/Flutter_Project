@@ -81,10 +81,8 @@ class ResultScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) {
-                              return Sertif(s, nama: 'sheren');
-                            },
-                          ), // Ganti dengan nama kelas halaman berikutnya Anda
+                              builder: (context) =>
+                                  Sertif()), // Ganti dengan nama kelas halaman berikutnya Anda
                         );
                       },
                       style: ElevatedButton.styleFrom(

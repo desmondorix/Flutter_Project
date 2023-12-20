@@ -141,7 +141,7 @@ class Sertif extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ScoreBoard(),
+                                builder: (context) => Sertif(),
                               ),
                             );
                           },
