@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marbel/pages/sertif.dart';
+import 'package:marbel/pages/rewardPage.dart';
 
 class ResultScreen extends StatelessWidget {
   final Map<int, String> answers;
@@ -81,8 +81,10 @@ class ResultScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  Sertif()), // Ganti dengan nama kelas halaman berikutnya Anda
+                            builder: (context) {
+                              return Sertif(s, nama: 'sheren');
+                            },
+                          ), // Ganti dengan nama kelas halaman berikutnya Anda
                         );
                       },
                       style: ElevatedButton.styleFrom(
