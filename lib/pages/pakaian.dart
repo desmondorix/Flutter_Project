@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:marbel/pages/detail_budaya.dart';
 
-class BudayaPage extends StatefulWidget {
-  const BudayaPage({super.key});
+class Pakaian extends StatefulWidget {
+  const Pakaian({super.key});
 
   @override
-  State<BudayaPage> createState() => _BudayaPageState();
+  State<Pakaian> createState() => _PakaianState();
 }
 
-class _BudayaPageState extends State<BudayaPage> {
+class _PakaianState extends State<Pakaian> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,19 +39,6 @@ class _BudayaPageState extends State<BudayaPage> {
           image: DecorationImage(
               image: AssetImage("assets/bg_batik.png"), fit : BoxFit.fill),
         ),
-          child: InkWell(
-            onTap: () {
-              // Navigate to the detail page when the card is tapped
-             Navigator.push(
-             context,
-           MaterialPageRoute(
-                 builder: (context) => DetailBudaya(
-
-    ),
-    )
-             );
-    },
-
         child: Padding(
           padding: const EdgeInsets.only(top: 15.0),
           child: GridView.builder(
@@ -105,7 +91,6 @@ class _BudayaPageState extends State<BudayaPage> {
               }),
         ),
       ),
-      )
     );
   }
 }
