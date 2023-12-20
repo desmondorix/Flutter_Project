@@ -1,116 +1,44 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'dart:async';
-import 'package:dio/dio.dart';
 
 abstract class Services {
   static const url = "http://10.0.2.2/study_flutter/";
 
   static Future<Map?> register(
       {required String username, required String kelas}) async {
-    if (username != "" || kelas != "") {
+    if (username.isNotEmpty && kelas.isNotEmpty) {
       String uri = "http://10.0.2.2/study_flutter/register.php";
       try {
         var res = await http.post(Uri.parse(uri), body: {
           "username": username,
           "kelas": kelas,
         });
-        var response = jsonDecode(res.body);
-        if (response["success"] == "true") {
-          print("Record Inserted");
-          username = "";
-          kelas = "";
+        if (res.statusCode == 200) {
+          var responseBody = res.body;
+          if (responseBody.isNotEmpty) {
+            var response = jsonDecode(responseBody);
+
+            if (response is Map) {
+              return response; // Return the response map
+            } else {
+              print("Invalid server response format: $responseBody");
+              return null;
+            }
+          } else {
+            print("Empty response body");
+            return null;
+          }
         } else {
-          print("some issue");
+          print("HTTP Error: ${res.statusCode}");
+          return null;
         }
       } catch (e) {
-        print(e);
+        print("Error: $e");
+        return null;
       }
     } else {
-      print("please fill all fields");
+      print("Please fill all fields");
+      return null;
     }
   }
-
-  // static Future<Map?> register(
-  //     {required String username, required String kelas}) async {
-  //     try {
-  //     Response? response = await Dio().post("$url/register.php",
-  //         data: {
-  //           "username" : username,
-  //           "kelas" : kelas,
-  //         });
-  //     if (response.statusCode == 201) {
-  //       return response.data as Map;
-  //     } else {
-  //       throw Exception(response.data['message']);
-  //     }
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
-
-  // static Future<Map?> register(
-  //     {required String nim,
-  //     required String name,
-  //     required String password}) async {
-  //   try {
-  //     Response? response = await Dio().post("$apiUrl/register",
-  //         options: Options(headers: {"Accept": "application/json"}),
-  //         data: {
-  //           "nim": nim,
-  //           "name": name,
-  //           "password": password,
-  //         });
-  //     if (response.statusCode == 201) {
-  //       return response.data as Map;
-  //     } else {
-  //       throw Exception(response.data['message']);
-  //     }
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
-
-  // static Future<Map?> login(
-  //     {required String nim, required String password}) async {
-  //   try {
-  //     Response? response = await Dio().post("$apiUrl/login",
-  //         options: Options(headers: {"Accept": "application/json"}),
-  //         data: {
-  //           "nim": nim,
-  //           "password": password,
-  //         });
-  //     if (response.statusCode == 200) {
-  //       return response.data as Map;
-  //     } else {
-  //       throw Exception(response.data['message']);
-  //     }
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
-
-  //
-
-//   static Future<Response?> logout(String token) async {
-//     try {
-//       Response? response = await Dio().get(
-//         "$apiUrl/logout",
-//         options: Options(
-//           headers: {
-//             "Accept" : "application/json",
-//             "Authorization" : "Bearer $token",
-//           }
-//         )
-//       );
-//       if (response.statusCode == 200) {
-//         return response;
-//       }else{
-//         throw Exception(response.data['message']);
-//       }
-//     } catch (e) {
-//       rethrow;
-//     }
-//   }
 }

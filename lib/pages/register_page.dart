@@ -17,14 +17,15 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController usernameController =TextEditingController();
-  TextEditingController kelasController =TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController kelasController = TextEditingController();
 
-  String? _dropdownValue;
+  String? dropdownValue;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    bool isDisabled = false;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -126,7 +127,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
-              CustomTextFieldHome(label: "Nama", controller: usernameController),
+              CustomTextFieldHome(
+                  label: "Nama", controller: usernameController),
               const SizedBox(height: 10),
               Container(
                 width: 250,
@@ -143,6 +145,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: DropdownButton(
                   hint: const Text("   Pilih Kelas"),
                   borderRadius: const BorderRadius.all(Radius.circular(22)),
+                  value: dropdownValue,
+                  isExpanded: true,
                   items: const [
                     DropdownMenuItem(
                         value: "Kelas 1", child: Text("   Kelas 1")),
@@ -157,14 +161,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     DropdownMenuItem(
                         value: "Kelas 6", child: Text("   Kelas 6")),
                   ],
-                  value: _dropdownValue,
-                  isExpanded: true,
-                  onChanged: (newValue) {
-                    setState(() {
-                      _dropdownValue = newValue as String;
-                    });
-                      kelasController = newValue.toString() as TextEditingController;
-                  },
+                  onChanged: !isDisabled
+                      ? (value) {
+                          setState(() {
+                            dropdownValue = value.toString();
+                          });
+                          kelasController.text = value.toString();
+                        }
+                      : null,
                 ),
               ),
               const SizedBox(height: 5),
@@ -174,37 +178,39 @@ class _RegisterPageState extends State<RegisterPage> {
                   Container(
                     child: TextButton(
                       onPressed: () async {
-                      // setState(() {
-                      //   isLoading = true;
-                      // });
-                      String username = usernameController.text.trim();
-                      String kelas = kelasController.toString();
-                      try {
-                            Map? response =
-                                await Services.register(username : username, kelas : kelas);
-                                // setState(() {
-                                //   isLoading = false;
-                                // });
-                            if (mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(response!['message'])));
-                              Navigator.pop(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MainPage(),
-                                  ));
-                            }
-                          } catch (e) {
-                            // setState(() {
-                            //   isLoading = false;
-                            // });
-                            if (mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(e.toString())));
-                            }
-                          }
-                    },
+                        String username = usernameController.text.trim();
+                        String kelas = kelasController.text;
+                        try {
+  Map? response = await Services.register(
+    username: username,
+    kelas: kelas,
+  );
+
+  if (response != null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(response['message'] ?? 'Unknown error')),
+    );
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return const MainPage();
+      }),
+    );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Response is null')),
+    );
+  }
+} catch (e) {
+  if (mounted) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(e.toString())),
+    );
+  }
+}
+
+                      },
                       child: const Row(
                         children: [
                           Text("Masuk",
