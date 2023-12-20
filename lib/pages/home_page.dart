@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marbel/pages/login_page.dart';
-import 'package:marbel/pages/register_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
