@@ -4,7 +4,7 @@ import 'package:marbel/pages/scoreboardPage.dart';
 class Sertif extends StatelessWidget {
   final String nama;
 
-  Sertif({required this.nama});
+  Sertif(String s, {required this.nama});
 
   @override
   Widget build(BuildContext context) {
