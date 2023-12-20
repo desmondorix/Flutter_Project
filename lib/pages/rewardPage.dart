@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/pages/scoreboardPage.dart';
 
 class Sertif extends StatelessWidget {
   @override
