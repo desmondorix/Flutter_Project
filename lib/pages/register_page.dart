@@ -178,37 +178,33 @@ class _RegisterPageState extends State<RegisterPage> {
                   Container(
                     child: TextButton(
                       onPressed: () async {
+                        // setState(() {
+                        //   isLoading = true;
+                        // });
                         String username = usernameController.text.trim();
-                        String kelas = kelasController.text;
+                        String kelas = kelasController.toString();
                         try {
                           Map? response = await Services.register(
-                            username: username,
-                            kelas: kelas,
-                          );
-
-                          if (response != null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                  content: Text(
-                                      response['message'] ?? 'Unknown error')),
-                            );
-
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return const HomePage();
-                              }),
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Response is null')),
-                            );
-                          }
-                        } catch (e) {
+                              username: username, kelas: kelas);
+                          // setState(() {
+                          //   isLoading = false;
+                          // });
                           if (mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(e.toString())),
-                            );
+                                SnackBar(content: Text(response!['message'])));
+                            Navigator.pop(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const MainPage(),
+                                ));
+                          }
+                        } catch (e) {
+                          // setState(() {
+                          //   isLoading = false;
+                          // });
+                          if (mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(e.toString())));
                           }
                         }
                       },
