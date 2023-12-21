@@ -39,6 +39,8 @@ dependencies:
   http: ^1.1.0
   google_fonts: ^6.1.0
   dio: ^5.4.0
+  image_picker: ^1.0.5
+  flutter_background: ^1.2.0
 
 dev_dependencies:
   flutter_test:
