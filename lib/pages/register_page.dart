@@ -181,35 +181,36 @@ class _RegisterPageState extends State<RegisterPage> {
                         String username = usernameController.text.trim();
                         String kelas = kelasController.text;
                         try {
-  Map? response = await Services.register(
-    username: username,
-    kelas: kelas,
-  );
+                          Map? response = await Services.register(
+                            username: username,
+                            kelas: kelas,
+                          );
 
-  if (response != null) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(response['message'] ?? 'Unknown error')),
-    );
+                          if (response != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      response['message'] ?? 'Unknown error')),
+                            );
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) {
-        return const MainPage();
-      }),
-    );
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Response is null')),
-    );
-  }
-} catch (e) {
-  if (mounted) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(e.toString())),
-    );
-  }
-}
-
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return const HomePage();
+                              }),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Response is null')),
+                            );
+                          }
+                        } catch (e) {
+                          if (mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(e.toString())),
+                            );
+                          }
+                        }
                       },
                       child: const Row(
                         children: [
