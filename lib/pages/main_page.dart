@@ -10,37 +10,32 @@ class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  State<MainPage> createState() => MainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
+class _MainPageState extends State<MainPage> {
 
-class MainPageState extends State<MainPage> {
-  @override
-  Widget build(BuildContext context) {
+Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xFFD8DAD9),
       appBar: AppBar(
-        title: const Text(
-          'MARBEL',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+          title: Text('MARBEL',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
         backgroundColor: Colors.grey[400],
         foregroundColor: Colors.black,
-        centerTitle: true,
-        shape: const ContinuousRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(50),
-          ),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.logout,
-              color: Colors.black,
-              size: 35,
+          centerTitle: true,
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(50),
             ),
-            onPressed: () {},
           ),
+
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.logout, color: Colors.black, size: 35,),
+          onPressed: () {},
+        ),
         ],
       ),
       body: Padding(
@@ -73,7 +68,8 @@ class MainPageState extends State<MainPage> {
                             spreadRadius: 3,
                             blurRadius: 3,
                           )
-                        ]),
+                        ]
+                    ),
                   ),
                 ),
               ],
@@ -109,13 +105,15 @@ class MainPageState extends State<MainPage> {
                   ),
                 );
               },
-            Text('Mulai Belajar',
+              child: const Text('Mulai Belajar',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
+        ),
+
             const SizedBox(
               height: 10,
             ),
-            Container(
+          Container(
               width: 250,
               height: 50,
               decoration: const BoxDecoration(
@@ -126,65 +124,64 @@ class MainPageState extends State<MainPage> {
                         blurRadius: 3,
                         offset: Offset(3, 3))
                   ]),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  backgroundColor: Colors.grey[400],
-                  foregroundColor: Colors.black,
-                  minimumSize: const Size(250, 50),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QuizScreen(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'Quiz',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+              child:TextButton(
+              style: TextButton.styleFrom(
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                backgroundColor: Colors.grey[400],
+                foregroundColor: Colors.black,
+                minimumSize: const Size(250, 50),
               ),
-            ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QuizScreen(),
+                  ),
+                );
+              },
+              child: const Text(
+                'Quiz',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),),
             const SizedBox(
               height: 10,
             ),
-            Container(
-              width: 250,
-              height: 50,
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(22)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black54,
-                        blurRadius: 3,
-                        offset: Offset(3, 3))
-                  ]),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  backgroundColor: Colors.grey[400],
-                  foregroundColor: Colors.black,
-                  minimumSize: const Size(250, 50),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ScoreBoard(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'History',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+        Container(
+          width: 250,
+          height: 50,
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(22)),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black54,
+                    blurRadius: 3,
+                    offset: Offset(3, 3))
+              ]),
+          child:TextButton(
+              style: TextButton.styleFrom(
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                backgroundColor: Colors.grey[400],
+                foregroundColor: Colors.black,
+                minimumSize: const Size(250, 50),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ScoreBoard(),
+                  ),
+                );
+              },
+              child: const Text(
+                'History',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-        )],
+        ),
+          ],
         ),
       ),
     );
