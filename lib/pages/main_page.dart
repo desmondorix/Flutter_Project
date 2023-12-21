@@ -4,6 +4,7 @@ import 'package:marbel/pages/login_page.dart';
 import 'package:marbel/pages/register_page.dart';
 import 'package:marbel/pages/scoreboardPage.dart';
 import 'package:marbel/pages/soal.dart';
+import 'package:marbel/view/kategori.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -80,37 +81,36 @@ class MainPageState extends State<MainPage> {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              width: 250,
-              height: 50,
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(22)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black54,
-                        blurRadius: 3,
-                        offset: Offset(3, 3))
-                  ]),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    backgroundColor: Colors.grey[400],
-                    foregroundColor: Colors.black,
-                    minimumSize: const Size(250, 50),
-                    shadowColor: Colors.black),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const BudayaPage(),
-                    ),
-                  );
-                },
-                child: const Text('Mulai Belajar',
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        Container(
+          width: 250,
+          height: 50,
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(22)),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black54,
+                    blurRadius: 3,
+                    offset: Offset(3, 3))
+              ]),
+          child: TextButton(
+              style: TextButton.styleFrom(
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  backgroundColor: Colors.grey[400],
+                  foregroundColor: Colors.black,
+                  minimumSize: const Size(250, 50),
+                  shadowColor: Colors.black
               ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Kategori(),
+                  ),
+                );
+              },
+              child: const Text('Mulai Belajar',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
             const SizedBox(
               height: 10,
