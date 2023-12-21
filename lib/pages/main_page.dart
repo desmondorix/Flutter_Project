@@ -109,7 +109,7 @@ class MainPageState extends State<MainPage> {
                   ),
                 );
               },
-              child: const Text('Mulai Belajar',
+            Text('Mulai Belajar',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
             const SizedBox(
@@ -184,7 +184,7 @@ class MainPageState extends State<MainPage> {
                 ),
               ),
             ),
-          ],
+        )],
         ),
       ),
     );
