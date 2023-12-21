@@ -40,7 +40,7 @@ class _insertdetailkState extends State<insertdetailk> {
   Future<void> uploadImage() async{
     if(caption.text !=""){
       try{
-        String uri = "http://10.0.2.2:8080/study_flutter/detail_kategori/insert_detail_kategori.php";
+        String uri = "http://10.0.2.2/study_flutter/detail_kategori/insert_detail_kategori.php";
         var res=await http.post(Uri.parse(uri), body: {
           "caption":caption.text,
           "data":imagedata,

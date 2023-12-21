@@ -29,7 +29,7 @@ class _KategoriState extends State<Kategori> {
     }
   }*/
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2:8080/study_flutter/kategori/view_data_kategori.php";
+    String uri = "http://10.0.2.2/study_flutter/kategori/view_data_kategori.php";
     try {
       var response = await http.get(Uri.parse(uri));
       setState(() {

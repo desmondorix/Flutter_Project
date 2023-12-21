@@ -91,7 +91,7 @@ class _DetailkState extends State<Detailk> {
                               borderRadius: const BorderRadius.all(
                                 Radius.circular(20),
                               ),
-                              child: Image.network("http://10.0.2.2:8080/study_flutter/detail_kategori/" + foto_daerah,
+                              child: Image.network("http://10.0.2.2/study_flutter/detail_kategori/" + foto_daerah,
                                 width: size.width,
                                 height: 165,
                                 fit: BoxFit.cover,

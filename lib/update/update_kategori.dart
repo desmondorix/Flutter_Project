@@ -44,7 +44,7 @@ class _update_kategoriState extends State<update_kategori> {
 
   Future<void> updaterecord() async {
     if (imagepath == null) {
-      String uri = "http://10.0.2.2:8080/study_flutter/kategori/update_kategori.php";
+      String uri = "http://10.0.2.2/study_flutter/kategori/update_kategori.php";
       try {
         var res = await http.post(Uri.parse(uri), body: {
           "id_kategori": id_kategori.text,
@@ -63,7 +63,7 @@ class _update_kategoriState extends State<update_kategori> {
         print(e);
       }
     } else if(imagepath != null){
-      String uri = "http://10.0.2.2:8080/study_flutter/kategori/update_kategori_img.php";
+      String uri = "http://10.0.2.2/study_flutter/kategori/update_kategori_img.php";
       try {
         var res = await http.post(Uri.parse(uri), body: {
           "id_kategori": id_kategori.text,

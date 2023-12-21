@@ -23,7 +23,7 @@ class _MakananState extends State<Makanan> {
   List userdata = [];
 
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2:8080/study_flutter/detail_kategori/view_data_detail.php?id=$id_kategori";
+    String uri = "http://10.0.2.2/study_flutter/detail_kategori/view_data_detail.php?id=$id_kategori";
     try {
       var response = await http.get(Uri.parse(uri));
       setState(() {

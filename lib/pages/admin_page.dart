@@ -60,23 +60,6 @@ class _MainPage_adminState extends State<MainPage_admin> {
                 },
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
-              height: 70,
-              child: Builder(
-                builder: (context){
-                  return ElevatedButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>Kategori())
-                        );
-                      },
-                      child: Text('View Kategori', style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.w500),)
-                  );
-                },
-              ),
-            ),
           ]),);
   }
 }
