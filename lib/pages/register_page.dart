@@ -19,16 +19,12 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController kelasController = TextEditingController();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController kelasController = TextEditingController();
 
-  String? dropdownValue;
   String? dropdownValue;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    bool isDisabled = false;
     bool isDisabled = false;
     return Scaffold(
       body: SingleChildScrollView(
@@ -153,8 +149,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   borderRadius: const BorderRadius.all(Radius.circular(22)),
                   value: dropdownValue,
                   isExpanded: true,
-                  value: dropdownValue,
-                  isExpanded: true,
                   items: const [
                     DropdownMenuItem(
                         value: "Kelas 1", child: Text("   Kelas 1")),
@@ -169,14 +163,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     DropdownMenuItem(
                         value: "Kelas 6", child: Text("   Kelas 6")),
                   ],
-                  onChanged: !isDisabled
-                      ? (value) {
-                          setState(() {
-                            dropdownValue = value.toString();
-                          });
-                          kelasController.text = value.toString();
-                        }
-                      : null,
                   onChanged: !isDisabled
                       ? (value) {
                           setState(() {
