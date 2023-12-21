@@ -36,7 +36,7 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
 
   late String id_kategori;
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2:8080/study_flutter/detail_kategori/view_data_detail.php?id=$id_kategori";
+    String uri = "http://10.0.2.2/study_flutter/detail_kategori/view_data_detail.php?id=$id_kategori";
     try {
       var response = await http.get(Uri.parse(uri));
       setState(() {
@@ -47,7 +47,7 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
     }
   }
   Future<void> delrecord(String id) async {
-    String uri = "http://10.0.2.2:8080/study_flutter/detail_kategori/delete_data_detail_kategori.php";
+    String uri = "http://10.0.2.2/study_flutter/detail_kategori/delete_data_detail_kategori.php";
     try {
       final res = await http.post(Uri.parse(uri), body: {"id": id});
       var respon = jsonDecode(res.body);
@@ -64,7 +64,7 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
   Future<void> uploadImage() async{
     if(caption.text !=""){
       try{
-        String uri = "http://10.0.2.2:8080/study_flutter/detail_kategori/insert_detail_kategori.php";
+        String uri = "http://10.0.2.2/study_flutter/detail_kategori/insert_detail_kategori.php";
         var res=await http.post(Uri.parse(uri), body: {
           "caption":caption.text,
           "data":imagedata,

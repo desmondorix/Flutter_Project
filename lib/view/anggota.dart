@@ -14,7 +14,7 @@ class detail_anggota extends StatefulWidget {
 class _detail_anggotaState extends State<detail_anggota> {
   List userdata = [];
   Future<void> delrecord(String id) async {
-    String uri = "http://10.0.2.2:8080/study_flutter/delete_data.php";
+    String uri = "http://10.0.2.2/study_flutter/delete_data.php";
     try {
       final res = await http.post(Uri.parse(uri), body: {"id": id});
       var respon = jsonDecode(res.body);
@@ -30,7 +30,7 @@ class _detail_anggotaState extends State<detail_anggota> {
   }
 
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2:8080/study_flutter/view_data.php";
+    String uri = "http://10.0.2.2/study_flutter/view_data.php";
     try {
       var response = await http.get(Uri.parse(uri));
       setState(() {

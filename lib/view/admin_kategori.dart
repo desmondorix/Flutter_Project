@@ -28,7 +28,7 @@ class _kategori_adminState extends State<kategori_admin> {
 
   ImagePicker imagePicker = new ImagePicker();
   Future<void> delrecord(String id) async {
-    String uri = "http://10.0.2.2:8080/study_flutter/kategori/delete_data_kategori.php";
+    String uri = "http://10.0.2.2/study_flutter/kategori/delete_data_kategori.php";
     try {
       final res = await http.post(Uri.parse(uri), body: {"id": id});
       var respon = jsonDecode(res.body);
@@ -43,7 +43,7 @@ class _kategori_adminState extends State<kategori_admin> {
     }
   }
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2:8080/study_flutter/kategori/view_data_kategori.php";
+    String uri = "http://10.0.2.2/study_flutter/kategori/view_data_kategori.php";
     try {
       var response = await http.get(Uri.parse(uri));
       setState(() {
@@ -57,7 +57,7 @@ class _kategori_adminState extends State<kategori_admin> {
   Future<void> uploadImage() async{
     if(caption.text !=""){
       try{
-        String uri = "http://10.0.2.2:8080/study_flutter/kategori/insert_kategori.php";
+        String uri = "http://10.0.2.2/study_flutter/kategori/insert_kategori.php";
         var res=await http.post(Uri.parse(uri), body: {
           "caption":caption.text,
           "data":imagedata,
