@@ -70,7 +70,7 @@ class _MakananState extends State<Makanan> {
       DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/tari/bg_batik.png"), fit: BoxFit.fill),
+              image: AssetImage("assets/bg_batik.png"), fit: BoxFit.fill),
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: 15.0),

@@ -70,7 +70,7 @@ class _DetailkState extends State<Detailk> {
       body: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/tari/bg_batik.png"), fit: BoxFit.fill),
+                image: AssetImage("assets/bg_batik.png"), fit: BoxFit.fill),
           ),
           child: SizedBox(
             child: Padding(
