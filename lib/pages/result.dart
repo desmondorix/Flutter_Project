@@ -2,35 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:marbel/pages/rewardPage.dart';
 
 class ResultScreen extends StatelessWidget {
-  final Map<int, String> answers;
+  final int score;
 
-  ResultScreen(this.answers);
-
-  int calculateScore() {
-    int score = 0;
-    // Define the correct answers for each question
-    Map<int, String> correctAnswers = {
-      1: 'Padang',
-      2: 'Jakarta',
-      3: 'Bangka Belitung', // Correct the spelling of 'elephant'
-      4: 'Aceh',
-      5: 'Badik Raja',
-    };
-
-    // Calculate the score based on correct answers
-    for (int i = 1; i <= 5; i++) {
-      if (answers[i] == correctAnswers[i]) {
-        score += 20;
-      }
-    }
-
-    return score;
-  }
+  ResultScreen(this.score);
 
   @override
   Widget build(BuildContext context) {
-    int score = calculateScore();
-
     return WillPopScope(
       onWillPop: () async {
         // Prevent the user from going back to the QuizScreen
@@ -38,7 +15,14 @@ class ResultScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Quiz Result'),
+          title: Text(
+            'Quiz Result',
+            style: TextStyle(
+              color: Colors.black, // Ubah warna teks menjadi hitam
+            ),
+          ),
+          centerTitle: true, // Tengahkan judul
+          backgroundColor: Color(0xFFD2B69F),
         ),
         body: Stack(
           fit: StackFit.expand,

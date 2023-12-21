@@ -22,7 +22,7 @@ Widget getQuestionContainer(int questionNumber, BuildContext context) {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               child: Image(
                 fit: BoxFit.cover,
-                image: NetworkImage(getQuestionImageUrl(questionNumber)),
+                image: AssetImage(getQuestionImageUrl(questionNumber)),
                 width: size.height,
                 height: 220,
               ),
@@ -52,15 +52,15 @@ String getQuestionImageUrl(int questionNumber) {
   // Provide image URLs based on the question number
   switch (questionNumber) {
     case 1:
-      return 'https://cdn.idntimes.com/content-images/post/20220917/download-3fe6f95cbbd0783306717b8176109a2f_600x400.jpg';
+      return 'assets/padangsoal.jpg';
     case 2:
-      return 'https://www.dapurkobe.co.id/wp-content/uploads/kerak-telor.jpg';
+      return 'assets/KerakTelor.jpg';
     case 3:
-      return 'https://seringjalan.com/wp-content/uploads/2020/06/Baju-Seting-Bangka-Belitung-830x1024.jpg';
+      return 'assets/BangkaBelitungsoal.jpg';
     case 4:
-      return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnH7VSN0R5d-dP5UsZbntcmxcPbTqwYG6M2vzkN4CW6ZIR1ffVmP5eGuCUkymaCKInBQE&usqp=CAU';
+      return "assets/acehsoal.jpeg";
     case 5:
-      return 'https://pariwisataindonesia.id/wp-content/uploads/2020/11/senjata-badik-Badik-Raja-foto-by-asyraafahmadicom.jpg';
+      return 'assets/badikrajasoal.jpg';
   // ... Add URLs for other questions as needed
     default:
       return '';

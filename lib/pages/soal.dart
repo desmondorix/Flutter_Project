@@ -17,6 +17,7 @@ class QuizScreen extends StatelessWidget {
         ),
         centerTitle: true, // Tengahkan judul
         backgroundColor: Color(0xFFD2B69F),
+        automaticallyImplyLeading: false,
       ),
       body: QuizBody(),
     );
@@ -31,6 +32,7 @@ class QuizBody extends StatefulWidget {
 class _QuizBodyState extends State<QuizBody> {
   int currentQuestion = 1;
   Map<int, String> answers = {};
+
 
   @override
   Widget build(BuildContext context) {
@@ -180,39 +182,60 @@ class _QuizBodyState extends State<QuizBody> {
           content: Text('Tekan YES apabila ingin menyimpan dan NO untuk kembali ke soal, pastikan semua jawaban telah terisi'),
           actions: <Widget>[
             TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(false); // Close the dialog and return false
-                },
-                child: Text('No',
-                  style: TextStyle(
-                    color: Colors.red, // Ubah warna teks menjadi hitam
-                  ),
-                )
+              onPressed: () {
+                Navigator.of(context).pop(false); // Close the dialog and return false
+              },
+              child: Text('No',
+                style: TextStyle(
+                  color: Colors.red, // Ubah warna teks menjadi hitam
+                ),
+              ),
             ),
             TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(true); // Close the dialog and return true
-                },
-                child: Text('YES',
-                  style: TextStyle(
-                    color: Colors.green, // Ubah warna teks menjadi hitam
-                  ),
-                )
-            )
+              onPressed: () {
+                Navigator.of(context).pop(true); // Close the dialog and return true
+              },
+              child: Text('YES',
+                style: TextStyle(
+                  color: Colors.green, // Ubah warna teks menjadi hitam
+                ),
+              ),
+            ),
           ],
         );
       },
     ).then((value) {
       if (value != null && value) {
-        // User pressed 'Yes', navigate to the ResultScreen
+        // User pressed 'Yes', calculate score and navigate to ResultScreen
+        int score = calculateScore();
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ResultScreen(answers)),
+          MaterialPageRoute(builder: (context) => ResultScreen(score)),
         );
       }
     });
   }
 
+  int calculateScore() {
+    int score = 0;
+    // Define the correct answers for each question
+    Map<int, String> correctAnswers = {
+      1: 'Padang',
+      2: 'Jakarta',
+      3: 'Bangka Belitung',
+      4: 'Aceh',
+      5: 'Badik Raja',
+    };
+
+    // Calculate the score based on correct answers
+    for (int i = 1; i <= 5; i++) {
+      if (answers[i] == correctAnswers[i]) {
+        score += 20;
+      }
+    }
+
+    return score;
+  }
 
   void setSelectedOption(String option) {
     setState(() {
