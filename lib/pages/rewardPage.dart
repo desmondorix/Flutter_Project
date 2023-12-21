@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:marbel/main.dart';
-import 'package:marbel/scoreboardPage.dart';
+import 'package:marbel/pages/scoreboardPage.dart';
 
 class Sertif extends StatelessWidget {
-  final String nama;
-
-  Sertif({required this.nama});
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

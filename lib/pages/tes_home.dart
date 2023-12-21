@@ -11,7 +11,7 @@ class _HomePageState extends State<HomePage1> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/bg1.png'),
           fit: BoxFit.cover,
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage1> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Mari Belajar Budaya Edisi Nusantara',
+                  'cintol push 3',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
