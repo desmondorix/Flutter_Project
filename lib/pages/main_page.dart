@@ -4,6 +4,7 @@ import 'package:marbel/pages/login_page.dart';
 import 'package:marbel/pages/register_page.dart';
 import 'package:marbel/pages/scoreboardPage.dart';
 import 'package:marbel/pages/soal.dart';
+import 'package:marbel/view/kategori.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -100,7 +101,7 @@ Widget build(BuildContext context) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const BudayaPage(),
+                    builder: (context) => const Kategori(),
                   ),
                 );
               },
