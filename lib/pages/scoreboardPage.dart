@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/pages/budaya_page.dart';
+import 'package:marbel/pages/main_page.dart';
 
 class ScoreBoard extends StatefulWidget {
   const ScoreBoard({Key? key}) : super(key: key);
@@ -41,6 +43,12 @@ class _ScoreBoardState extends State<ScoreBoard> {
                 color: Colors.white,
                 iconSize: 40,
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainPage(),
+                    ),
+                  );
                   // Your home navigation logic goes here
                 },
               ),
