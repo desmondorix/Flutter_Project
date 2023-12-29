@@ -42,7 +42,7 @@ abstract class Services {
     }
   }
 
-static Future<Map?> login({required String username}) async {
+  static Future<Map?> login({required String username}) async {
   if (username.isNotEmpty) {
     String uri = "http://10.0.2.2/study_flutter/login.php";
     try {
@@ -84,5 +84,4 @@ static Future<Map?> login({required String username}) async {
     return null;
   }
 }
-
 }

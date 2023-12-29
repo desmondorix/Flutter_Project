@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marbel/pages/result.dart';
 import 'package:marbel/widget/answerContain.dart';
 import 'package:marbel/widget/questionContain.dart';
-
+import 'package:http/http.dart' as http;
 
 class QuizScreen extends StatelessWidget {
   @override
@@ -33,6 +33,26 @@ class _QuizBodyState extends State<QuizBody> {
   int currentQuestion = 1;
   Map<int, String> answers = {};
 
+  int calculateScore() {
+    int score = 0;
+    // Define the correct answers for each question
+    Map<int, String> correctAnswers = {
+      1: 'Padang',
+      2: 'Jakarta',
+      3: 'Bangka Belitung',
+      4: 'Aceh',
+      5: 'Badik Raja',
+    };
+
+    // Calculate the score based on correct answers
+    for (int i = 1; i <= 5; i++) {
+      if (answers[i] == correctAnswers[i]) {
+        score += 20;
+      }
+    }
+
+    return score;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -208,6 +228,8 @@ class _QuizBodyState extends State<QuizBody> {
       if (value != null && value) {
         // User pressed 'Yes', calculate score and navigate to ResultScreen
         int score = calculateScore();
+        String username = "witol"; // Gantilah dengan cara mendapatkan nama pengguna yang diinputkan pada saat login
+        sendScoreToServer(username, score);
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => ResultScreen(score)),
@@ -216,27 +238,19 @@ class _QuizBodyState extends State<QuizBody> {
     });
   }
 
-  int calculateScore() {
-    int score = 0;
-    // Define the correct answers for each question
-    Map<int, String> correctAnswers = {
-      1: 'Padang',
-      2: 'Jakarta',
-      3: 'Bangka Belitung',
-      4: 'Aceh',
-      5: 'Badik Raja',
-    };
+  void sendScoreToServer(String username, int score) async {
+    final url = '"http://10.0.2.2/study_flutter/save_score.php"';
+    final response = await http.post(
+      Uri.parse(url),
+      body: {'username': username, 'score': score.toString()},
+    );
 
-    // Calculate the score based on correct answers
-    for (int i = 1; i <= 5; i++) {
-      if (answers[i] == correctAnswers[i]) {
-        score += 20;
-      }
+    if (response.statusCode == 200) {
+      print('Score sent successfully');
+    } else {
+      print('Failed to send score. Error: ${response.reasonPhrase}');
     }
-
-    return score;
   }
-
   void setSelectedOption(String option) {
     setState(() {
       answers[currentQuestion] = option;
