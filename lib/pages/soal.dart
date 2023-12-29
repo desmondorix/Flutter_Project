@@ -3,6 +3,7 @@ import 'package:marbel/pages/result.dart';
 import 'package:marbel/widget/answerContain.dart';
 import 'package:marbel/widget/questionContain.dart';
 import 'package:http/http.dart' as http;
+import 'package:marbel/services.dart';
 
 class QuizScreen extends StatelessWidget {
   @override
@@ -50,7 +51,7 @@ class _QuizBodyState extends State<QuizBody> {
         score += 20;
       }
     }
-
+    int score = calculateScore();
     return score;
   }
 
@@ -193,8 +194,9 @@ class _QuizBodyState extends State<QuizBody> {
     );
   }
 
-  void _showConfirmationDialog() {
+  void _showConfirmationDialog() async {
     showDialog(
+
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -205,52 +207,65 @@ class _QuizBodyState extends State<QuizBody> {
               onPressed: () {
                 Navigator.of(context).pop(false); // Close the dialog and return false
               },
-              child: Text('No',
+              child: Text(
+                'No',
                 style: TextStyle(
-                  color: Colors.red, // Ubah warna teks menjadi hitam
+                  color: Colors.red,
                 ),
               ),
             ),
             TextButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.of(context).pop(true); // Close the dialog and return true
+
+                String username = "witol"; // Replace with the actual username
+
+                try {
+                  Map? response = await Services.sendScore(username: username, score: score);
+
+                  if (response != null && response['success'] == false) {
+                    // Score sent successfully, navigate to ResultScreen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ResultScreen(score)),
+                    );
+                  } else {
+                    // Handle the case where sending the score failed
+                    print('Failed to send score. Response: $response');
+                  }
+                } catch (e) {
+                  // Handle exceptions during the HTTP request
+                  print('Failed to send score. Exception: $e');
+                }
               },
-              child: Text('YES',
+              child: Text(
+                'YES',
                 style: TextStyle(
-                  color: Colors.green, // Ubah warna teks menjadi hitam
+                  color: Colors.green,
                 ),
               ),
             ),
           ],
         );
       },
-    ).then((value) {
-      if (value != null && value) {
-        // User pressed 'Yes', calculate score and navigate to ResultScreen
-        int score = calculateScore();
-        String username = "witol"; // Gantilah dengan cara mendapatkan nama pengguna yang diinputkan pada saat login
-        sendScoreToServer(username, score);
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ResultScreen(score)),
-        );
-      }
-    });
-  }
-
-  void sendScoreToServer(String username, int score) async {
-    final url = '"http://10.0.2.2/study_flutter/save_score.php"';
-    final response = await http.post(
-      Uri.parse(url),
-      body: {'username': username, 'score': score.toString()},
     );
-
-    if (response.statusCode == 200) {
-      print('Score sent successfully');
-    } else {
-      print('Failed to send score. Error: ${response.reasonPhrase}');
-    }
   }
+
+
+  // void sendScoreToServer(String username, int score) async {
+  //   final url = '"http://10.0.2.2/study_flutter/save_score.php"';
+  //   final response = await http.post(
+  //     Uri.parse(url),
+  //     body: {'username': username, 'score': score.toString()},
+  //   );
+  //
+  //   if (response.statusCode == 200) {
+  //     print('Score sent successfully');
+  //   } else {
+  //     print('Failed to send score. Error: ${response.reasonPhrase}');
+  //   }
+  // }
+
   void setSelectedOption(String option) {
     setState(() {
       answers[currentQuestion] = option;
