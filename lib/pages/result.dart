@@ -43,7 +43,7 @@ class ResultScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Quiz Result'),
+          title: const Text('Quiz Result'),
         ),
         body: Stack(
           fit: StackFit.expand,
@@ -59,7 +59,7 @@ class ResultScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                         top: 240.0), // Margin digunakan untuk mengatur posisi
                     child: Text(
                       '$score',
@@ -75,7 +75,7 @@ class ResultScreen extends StatelessWidget {
                       height:
                           20), // Add some space between the score and the button
                   Container(
-                    margin: EdgeInsets.only(top: 240.0),
+                    margin: const EdgeInsets.only(top: 240.0),
                     width: 300, // Set the width of the button
                     height: 100, // Set the height of the button
                     alignment: Alignment
@@ -104,9 +104,9 @@ class ResultScreen extends StatelessWidget {
                               35.0), // Set the border radius
                         ),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
-                          'Ambil \nSertifikat $username',
+                          'Ambil \nSertifikat',
                           textAlign:
                               TextAlign.center, // Center the text horizontally
                           style: TextStyle(

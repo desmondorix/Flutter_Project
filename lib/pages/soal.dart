@@ -184,14 +184,14 @@ class _QuizBodyState extends State<QuizBody> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('SIMPAN JAWABAN ?'),
-          content: Text('Tekan YES apabila ingin menyimpan dan NO untuk kembali ke soal, pastikan semua jawaban telah terisi'),
+          title: const Text('SIMPAN JAWABAN ?'),
+          content: const Text('Tekan YES apabila ingin menyimpan dan NO untuk kembali ke soal, pastikan semua jawaban telah terisi'),
           actions: <Widget>[
             TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(false); // Close the dialog and return false
                 },
-                child: Text('No',
+                child: const Text('No',
                   style: TextStyle(
                     color: Colors.red, // Ubah warna teks menjadi hitam
                   ),
@@ -201,7 +201,7 @@ class _QuizBodyState extends State<QuizBody> {
                 onPressed: () {
                   Navigator.of(context).pop(true); // Close the dialog and return true
                 },
-                child: Text('YES',
+                child: const Text('YES',
                   style: TextStyle(
                     color: Colors.green, // Ubah warna teks menjadi hitam
                   ),
