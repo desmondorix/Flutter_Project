@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marbel/pages/scoreboardPage.dart';
 
 class Sertif1 extends StatelessWidget {
+  final TextEditingController usernameController;
+  Sertif1({Key? key, required this.usernameController}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -142,7 +144,8 @@ class Sertif1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ScoreBoard(),
+                                builder: (context) => ScoreBoard(
+                                    usernameController: usernameController),
                               ),
                             );
                           },

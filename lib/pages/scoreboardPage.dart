@@ -3,7 +3,9 @@ import 'package:marbel/pages/budaya_page.dart';
 import 'package:marbel/pages/main_page.dart';
 
 class ScoreBoard extends StatefulWidget {
-  const ScoreBoard({Key? key}) : super(key: key);
+  final TextEditingController usernameController; // Add this line
+  const ScoreBoard({Key? key, required this.usernameController})
+      : super(key: key);
 
   @override
   State<ScoreBoard> createState() => _ScoreBoardState();
@@ -46,7 +48,9 @@ class _ScoreBoardState extends State<ScoreBoard> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MainPage(usernameController: usernameController,),
+                      builder: (context) => MainPage(
+                        usernameController: usernameController,
+                      ),
                     ),
                   );
                   // Your home navigation logic goes here
