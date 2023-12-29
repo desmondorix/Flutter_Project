@@ -13,11 +13,11 @@ class ResultScreen extends StatelessWidget {
     int score = 0;
     // Define the correct answers for each question
     Map<int, String> correctAnswers = {
-      1: 'London',
-      2: 'Mars',
-      3: 'elephant', // Correct the spelling of 'elephant'
-      4: '1492',
-      5: 'Garlic',
+      1: 'Padang',
+      2: 'Jakarta',
+      3: 'Bangka Belitung', // Correct the spelling of 'elephant'
+      4: 'Aceh',
+      5: 'Badik Raja',
     };
 
     // Calculate the score based on correct answers
