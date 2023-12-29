@@ -85,4 +85,42 @@ static Future<Map?> login({required String username}) async {
   }
 }
 
+static Future<Map?> submitScore({
+    required String username,
+    required String nilai,
+  }) async {
+    String uri = "http://10.0.2.2/study_flutter/insertnilai.php";
+
+    try {
+      Map<String, String> body = {
+        "username": username,
+        "nilai": nilai,
+      };
+
+      var res = await http.post(Uri.parse(uri), body: body);
+
+      if (res.statusCode == 200) {
+        try {
+          // Attempt to parse the response as JSON
+          var parsedResponse = jsonDecode(res.body);
+
+          if (parsedResponse is Map) {
+            return parsedResponse;
+          } else {
+            print("Invalid server response format: $parsedResponse");
+            return null;
+          }
+        } catch (e) {
+          print("Error parsing server response: $e");
+          return null;
+        }
+      } else {
+        print("HTTP Error: ${res.statusCode}");
+        return null;
+      }
+    } catch (e) {
+      print("Error submitting score: $e");
+      return null;
+    }
+  }
 }

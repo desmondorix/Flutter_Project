@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/pages/home_page.dart';
+import 'package:marbel/pages/main_page.dart';
 
 class Sertif extends StatelessWidget {
+  final TextEditingController usernameController;
+  const Sertif({super.key, required this.usernameController});
+
   @override
   Widget build(BuildContext context) {
+    String username = usernameController.text;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Reward',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -14,9 +20,9 @@ class Sertif extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Color(0xFF572D15),
+        backgroundColor: const Color(0xFF572D15),
         centerTitle: true,
-        shape: ContinuousRectangleBorder(
+        shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(70),
           ),
@@ -68,36 +74,36 @@ class Sertif extends StatelessWidget {
                                   alignment: Alignment.topCenter,
                                   child: Image.asset('assets/medal.png'),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 22,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Selamat Kepada',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Text(
-                                      '"S H E R E N"',
-                                      style: TextStyle(
+                                      '"$username"',
+                                      style: const TextStyle(
                                         color: Colors.red,
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold,
                                         decoration: TextDecoration.underline,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
-                                    Text(
+                                    const Text(
                                       'Telah menyelesaikan pembelajaran dan Kuis Game Edukasi "Marbel Budaya Nusantara"',
                                       style: TextStyle(
                                         color: Colors.black,
@@ -127,8 +133,8 @@ class Sertif extends StatelessWidget {
                       children: [
                         Container(
                           width: size.width * 0.8, // Adjust the width as needed
-                          child: Text(
-                            'Terima kasih telah menyelesaikan pembelajaran dan Kuis Game Edukasi “Marbel Budaya Nusantara Kamu berhak mendapatkan sertifikat ini.',
+                          child: const Text(
+                            'Terima kasih telah menyelesaikan pembelajaran dan Kuis Game Edukasi “Marbel Budaya Nusantara". Kamu berhak mendapatkan sertifikat ini.',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
@@ -141,11 +147,12 @@ class Sertif extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Sertif(),
+                                builder: (context) => MainPage(
+                                    usernameController: usernameController),
                               ),
                             );
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_forward,
                             color: Colors.white,
                           ),

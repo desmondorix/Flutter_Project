@@ -195,7 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return const MainPage();
+                                return MainPage(usernameController: usernameController,);
                               }),
                             );
                           } else {

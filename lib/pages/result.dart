@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/rewardPage.dart';
+import 'package:marbel/pages/sertif.dart';
+import 'package:marbel/services.dart';
 
 class ResultScreen extends StatelessWidget {
+  final TextEditingController usernameController;
   final Map<int, String> answers;
 
-  ResultScreen(this.answers);
+  const ResultScreen(
+      {Key? key, required this.answers, required this.usernameController});
 
   int calculateScore() {
     int score = 0;
@@ -30,6 +34,7 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int score = calculateScore();
+    String username = usernameController.text.trim();
 
     return WillPopScope(
       onWillPop: () async {
@@ -58,7 +63,7 @@ class ResultScreen extends StatelessWidget {
                         top: 240.0), // Margin digunakan untuk mengatur posisi
                     child: Text(
                       '$score',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
                         color: Colors
@@ -66,7 +71,7 @@ class ResultScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                       height:
                           20), // Add some space between the score and the button
                   Container(
@@ -76,13 +81,20 @@ class ResultScreen extends StatelessWidget {
                     alignment: Alignment
                         .center, // Align the button content to the center
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Navigate to the next page (replace 'NextPage' with the actual page name)
+                      onPressed: () async {
+                        // Panggil fungsi submitScore untuk menyimpan nilai ke server
+                        await Services.submitScore(
+                            username:
+                                username, // Ganti dengan username yang sesuai
+                            nilai: score.toString());
+
+                        // Navigate to the next page (RewardPage)
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  Sertif()), // Ganti dengan nama kelas halaman berikutnya Anda
+                          MaterialPageRoute(builder: (context) {
+                            return Sertif(usernameController : usernameController);
+                          },
+                          ),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -94,7 +106,7 @@ class ResultScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Ambil \nSertifikat',
+                          'Ambil \nSertifikat $username',
                           textAlign:
                               TextAlign.center, // Center the text horizontally
                           style: TextStyle(

@@ -5,6 +5,8 @@ import 'package:marbel/widget/questionContain.dart';
 
 
 class QuizScreen extends StatelessWidget {
+  final TextEditingController usernameController;
+  const QuizScreen({Key? key, required this.usernameController});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +20,18 @@ class QuizScreen extends StatelessWidget {
         centerTitle: true, // Tengahkan judul
         backgroundColor: Color(0xFFD2B69F),
       ),
-      body: QuizBody(),
+      body: QuizBody(usernameController: usernameController,),
     );
   }
 }
 
 class QuizBody extends StatefulWidget {
+  
+final TextEditingController usernameController;
+
+  const QuizBody({Key? key, required this.usernameController})
+      : super(key: key);
+
   @override
   _QuizBodyState createState() => _QuizBodyState();
 }
@@ -207,7 +215,7 @@ class _QuizBodyState extends State<QuizBody> {
         // User pressed 'Yes', navigate to the ResultScreen
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ResultScreen(answers)),
+          MaterialPageRoute(builder: (context) => ResultScreen(answers: answers, usernameController: widget.usernameController)),
         );
       }
     });
