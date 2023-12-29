@@ -22,13 +22,13 @@ Widget getQuestionContainer(int questionNumber, BuildContext context) {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               child: Image(
                 fit: BoxFit.cover,
-                image: NetworkImage(getQuestionImageUrl(questionNumber)),
+                image: AssetImage(getQuestionImageUrl(questionNumber)),
                 width: size.height,
                 height: 220,
               ),
             ),
             Positioned(
-              bottom: 8,
+              bottom: 3,
               left: 23,
               right: 23,
               child: Text(
@@ -52,15 +52,15 @@ String getQuestionImageUrl(int questionNumber) {
   // Provide image URLs based on the question number
   switch (questionNumber) {
     case 1:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'assets/padangsoal.jpg';
     case 2:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'assets/KerakTelor.jpg';
     case 3:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'assets/BangkaBelitungsoal.jpg';
     case 4:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return "assets/acehsoal.jpeg";
     case 5:
-      return 'https://asset.kompas.com/crops/-tukq-UsIymUQXKSNIR6jGI23fA=/0x0:1000x667/750x500/data/photo/2022/12/31/63afd57be0e64.jpg';
+      return 'assets/badikrajasoal.jpg';
   // ... Add URLs for other questions as needed
     default:
       return '';
@@ -70,17 +70,16 @@ String getQuestionImageUrl(int questionNumber) {
 String getQuestionText(int questionNumber) {
   switch (questionNumber) {
     case 1:
-      return 'What is the capital of France?';
+      return 'Dari manakah asal rumah daerah pada gambar di atas?';
     case 2:
-      return 'Which planet is known as the Red Planet?';
+      return 'Kerak Telor adalah makanan yang berasal dari daerah?';
     case 3:
-      return 'What is the largest mammal on Earth?';
+      return 'Pakaian adat gambar di atas \n berasal dari mana?';
     case 4:
-      return 'In which year did Christopher Columbus reach the Americas?';
+      return 'Senjata Diatas \n Berasal dari daerah?';
     case 5:
-      return 'What is the main ingredient in guacamole?';
+      return 'Apa nama \n senjata di atas ?';
     default:
       return '';
   }
 }
-
