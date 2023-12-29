@@ -51,7 +51,7 @@ class _QuizBodyState extends State<QuizBody> {
         score += 20;
       }
     }
-    int score = calculateScore();
+
     return score;
   }
 
@@ -217,7 +217,7 @@ class _QuizBodyState extends State<QuizBody> {
             TextButton(
               onPressed: () async {
                 Navigator.of(context).pop(true); // Close the dialog and return true
-
+                int score = calculateScore();
                 String username = "witol"; // Replace with the actual username
 
                 try {
