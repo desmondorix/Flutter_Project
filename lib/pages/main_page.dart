@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:marbel/pages/budaya_page.dart';
-import 'package:marbel/pages/login_page.dart';
-import 'package:marbel/pages/register_page.dart';
 import 'package:marbel/pages/scoreboardPage.dart';
 import 'package:marbel/pages/soal.dart';
 import 'package:marbel/view/kategori.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  final TextEditingController usernameController;
+  const MainPage({super.key, required this.usernameController});
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -17,15 +15,15 @@ class _MainPageState extends State<MainPage> {
 Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xFFD8DAD9),
+      backgroundColor: const Color(0xFFD8DAD9),
       appBar: AppBar(
-          title: Text('MARBEL',
-              style: const TextStyle(fontWeight: FontWeight.bold),
+          title: const Text('MARBEL',
+              style: TextStyle(fontWeight: FontWeight.bold),
       ),
         backgroundColor: Colors.grey[400],
         foregroundColor: Colors.black,
           centerTitle: true,
-          shape: ContinuousRectangleBorder(
+          shape: const ContinuousRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(50),
             ),
@@ -33,7 +31,7 @@ Widget build(BuildContext context) {
 
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.logout, color: Colors.black, size: 35,),
+          icon: const Icon(Icons.logout, color: Colors.black, size: 35,),
           onPressed: () {},
         ),
         ],
@@ -136,7 +134,7 @@ Widget build(BuildContext context) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => QuizScreen(),
+                    builder: (context) => QuizScreen(usernameController: widget.usernameController),
                   ),
                 );
               },

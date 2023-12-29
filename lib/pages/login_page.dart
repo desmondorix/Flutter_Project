@@ -133,7 +133,7 @@ class _RegisterPageState extends State<LoginPage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const MainPage(),
+                                      MainPage(usernameController: usernameController),
                                 ));
                           }
                         } catch (e) {

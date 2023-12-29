@@ -11,7 +11,7 @@ class ScoreBoard extends StatefulWidget {
 
 class _ScoreBoardState extends State<ScoreBoard> {
   TextEditingController scoreController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController classController = TextEditingController();
 
   @override
@@ -46,7 +46,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MainPage(),
+                      builder: (context) => MainPage(usernameController: usernameController,),
                     ),
                   );
                   // Your home navigation logic goes here
@@ -134,7 +134,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
                 borderRadius: BorderRadius.circular(100),
               ),
               child: TextField(
-                controller: nameController,
+                controller: usernameController,
                 decoration: InputDecoration(
                   hintText: 'Sheren',
                   border: InputBorder.none,

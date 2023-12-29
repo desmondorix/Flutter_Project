@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/scoreboardPage.dart';
 
-class Sertif extends StatelessWidget {
+class Sertif1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Reward',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -17,7 +17,7 @@ class Sertif extends StatelessWidget {
         ),
         backgroundColor: Color(0xFF572D15),
         centerTitle: true,
-        shape: ContinuousRectangleBorder(
+        shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(70),
           ),
@@ -69,10 +69,10 @@ class Sertif extends StatelessWidget {
                                   alignment: Alignment.topCenter,
                                   child: Image.asset('assets/medal.png'),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 22,
                                 ),
-                                Column(
+                                const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
