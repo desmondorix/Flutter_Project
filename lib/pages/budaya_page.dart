@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,7 +16,8 @@ class _BudayaPageState extends State<BudayaPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kategori Budaya',
+        title: Text(
+          'Kategori Budaya',
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.grey[400],
@@ -25,28 +28,29 @@ class _BudayaPageState extends State<BudayaPage> {
             bottom: Radius.circular(50),
           ),
         ),
-
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.logout, color: Colors.black, size: 35,),
+            icon: Icon(
+              Icons.logout,
+              color: Colors.black,
+              size: 35,
+            ),
             onPressed: () {},
           ),
         ],
       ),
-      body:
-      DecoratedBox(
+      body: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/bg_batik.png"), fit : BoxFit.fill),
+              image: AssetImage("assets/bg_batik.png"), fit: BoxFit.fill),
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: 15.0),
           child: GridView.builder(
               gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: 6,
-              itemBuilder: (BuildContext context, index)
-              {
+              itemBuilder: (BuildContext context, index) {
                 return SizedBox(
                     width: size.width,
                     child: Card(
@@ -61,7 +65,8 @@ class _BudayaPageState extends State<BudayaPage> {
                             borderRadius: const BorderRadius.all(
                               Radius.circular(20),
                             ),
-                            child: Image.network("foto_daerah, masukin urlnya",
+                            child: Image.network(
+                              "foto_daerah, masukin urlnya",
                               width: size.width,
                               height: 130,
                               fit: BoxFit.cover,
@@ -70,7 +75,8 @@ class _BudayaPageState extends State<BudayaPage> {
                           Container(
                             alignment: Alignment.topCenter,
                             margin: const EdgeInsets.only(top: 8),
-                            child: Text("nama_daerah",
+                            child: Text(
+                              "nama_daerah",
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
@@ -78,16 +84,15 @@ class _BudayaPageState extends State<BudayaPage> {
                           Container(
                             alignment: Alignment.topCenter,
                             margin: const EdgeInsets.only(top: 4),
-                            child: Text("Asal daerah",
+                            child: Text(
+                              "Asal daerah",
                               style: const TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             ),
                           ),
                         ],
                       ),
-                    )
-
-                );
+                    ));
               }),
         ),
       ),

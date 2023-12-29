@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -30,16 +32,19 @@ class _MainPage_adminState extends State<MainPage_admin> {
               margin: EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
               height: 70,
               child: Builder(
-                builder: (context){
+                builder: (context) {
                   return ElevatedButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>kategori_admin())
-                        );
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => kategori_admin()));
                       },
-                      child: Text('Data Kategori', style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.w500),)
-                  );
+                      child: Text(
+                        'Data Kategori',
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ));
                 },
               ),
             ),
@@ -47,19 +52,23 @@ class _MainPage_adminState extends State<MainPage_admin> {
               margin: EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
               height: 70,
               child: Builder(
-                builder: (context){
+                builder: (context) {
                   return ElevatedButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>detail_anggota())
-                        );
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => detail_anggota()));
                       },
-                      child: Text('Anggota', style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.w500),)
-                  );
+                      child: Text(
+                        'Anggota',
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ));
                 },
               ),
             ),
-          ]),);
+          ]),
+    );
   }
 }

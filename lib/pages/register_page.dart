@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -195,7 +197,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return MainPage(usernameController: usernameController,);
+                                return MainPage(
+                                  usernameController: usernameController,
+                                );
                               }),
                             );
                           } else {
