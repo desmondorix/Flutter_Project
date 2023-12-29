@@ -129,8 +129,6 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               CustomTextFieldHome(
                   label: "Nama", controller: usernameController),
-              CustomTextFieldHome(
-                  label: "Nama", controller: usernameController),
               const SizedBox(height: 10),
               Container(
                 width: 250,
