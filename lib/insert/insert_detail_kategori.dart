@@ -9,8 +9,9 @@ import 'dart:async';
 import 'dart:io';
 
 import '../main.dart';
+import '../view/admin_detail_kategori.dart';
+import '../view/kategori.dart';
 
-// ignore: must_be_immutable
 class insertdetailk extends StatefulWidget {
   String id_kategori;
   String nama_kategori;
