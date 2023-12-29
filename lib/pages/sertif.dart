@@ -49,11 +49,11 @@ class Sertif extends StatelessWidget {
                     Stack(
                       children: [
                         Card(
-                          margin: EdgeInsets.all(20),
+                          margin: const EdgeInsets.all(20),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          color: Color(0xFFD9E3DA),
+                          color: const Color(0xFFD9E3DA),
                           elevation: 20,
                           child: Container(
                             width: 400,
@@ -127,7 +127,7 @@ class Sertif extends StatelessWidget {
                   child: Container(
                     width: size.width,
                     height: 125,
-                    color: Color(0xFF602c2c),
+                    color: const Color(0xFF602c2c),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
