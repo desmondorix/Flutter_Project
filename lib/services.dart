@@ -124,8 +124,48 @@ abstract class Services {
     }
   }
 
+<<<<<<< HEAD
   static Future<Map?> getUserData({required String username}) async {
     String uri = "http://10.0.2.2/study_flutter/tampilscoreboard.php";
+=======
+  static const String baseUrl = "http://10.0.2.2/study_flutter/";
+
+  static Future<Map?> selectNilai({required String username}) async {
+    String uri = "${baseUrl}selectnilai.php";
+
+    try {
+      var res = await http.post(Uri.parse(uri), body: {
+        "username": username,
+      });
+
+      if (res.statusCode == 200) {
+        try {
+          // Attempt to parse the response as JSON
+          var parsedResponse = jsonDecode(res.body);
+
+          if (parsedResponse is Map) {
+            return parsedResponse;
+          } else {
+            print("Invalid server response format: $parsedResponse");
+            return null;
+          }
+        } catch (e) {
+          print("Error parsing server response: $e");
+          return null;
+        }
+      } else {
+        print("HTTP Error: ${res.statusCode}");
+        return null;
+      }
+    } catch (e) {
+      print("Error retrieving score: $e");
+      return null;
+    }
+  }
+
+  static Future<Map?> selectKelas({required String username}) async {
+    String uri = baseUrl + "selectkelas.php";
+>>>>>>> b797cb57f471e305942993ded66d0bce4cc7c9fb
 
     try {
       var res = await http.post(Uri.parse(uri), body: {
@@ -138,7 +178,11 @@ abstract class Services {
           var response = jsonDecode(responseBody);
 
           if (response is Map) {
+<<<<<<< HEAD
             return response;
+=======
+            return response; // Return the response map
+>>>>>>> b797cb57f471e305942993ded66d0bce4cc7c9fb
           } else {
             print("Invalid server response format: $responseBody");
             return null;
