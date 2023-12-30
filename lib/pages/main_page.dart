@@ -5,16 +5,13 @@ import 'package:marbel/view/kategori.dart';
 
 class MainPage extends StatefulWidget {
   final TextEditingController usernameController;
-  const MainPage({Key? key, required this.usernameController})
-      : super(key: key);
+  const MainPage({super.key, required this.usernameController});
 
   @override
   State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  get usernameController => usernameController;
-
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -176,8 +173,8 @@ class _MainPageState extends State<MainPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ScoreBoard(
-                        usernameController: usernameController,
+                      builder: (context) => ScoreBoard(
+                        usernameController: widget.usernameController,
                       ),
                     ),
                   );
