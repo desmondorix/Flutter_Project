@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/budaya_page.dart';
 import 'package:marbel/pages/main_page.dart';
+import 'package:marbel/services.dart';
 
 class ScoreBoard extends StatefulWidget {
-  final TextEditingController usernameController; // Add this line
-  const ScoreBoard({Key? key, required this.usernameController})
-      : super(key: key);
+  const ScoreBoard({Key? key}) : super(key: key);
 
   @override
   State<ScoreBoard> createState() => _ScoreBoardState();
@@ -13,8 +12,52 @@ class ScoreBoard extends StatefulWidget {
 
 class _ScoreBoardState extends State<ScoreBoard> {
   TextEditingController scoreController = TextEditingController();
-  TextEditingController usernameController = TextEditingController();
   TextEditingController classController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch and update the score data when the widget is initialized
+    fetchScoreData();
+    fetchKelasData();
+  }
+
+  Future<void> fetchScoreData() async {
+    try {
+      Map? response =
+          await Services.selectNilai(username: widget.usernameController.text);
+
+      if (response != null && response["success"] == true) {
+        setState(() {
+          scoreController.text = response['data']['nilai'] ?? 'N/A';
+        });
+      } else {
+        print("Error retrieving score data: ${response?['message']}");
+      }
+    } catch (e) {
+      print("Exception: $e");
+    }
+  }
+
+  Future<void> fetchKelasData() async {
+    try {
+      Map? response =
+          await Services.selectKelas(username: widget.usernameController.text);
+
+      print("Kelas Response: $response");
+
+      if (response != null && response["success"] == true) {
+        setState(() {
+          classController.text =
+              response['data']['kelas'] ?? 'N/A'; // Update this line
+        });
+      } else {
+        print("Error retrieving class data: ${response?['message']}");
+      }
+    } catch (e) {
+      print("Exception: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +68,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
           mainAxisAlignment: MainAxisAlignment.center, // Tambahkan properti ini
           children: [
             // Score Board
-            Expanded(
+            const Expanded(
               child: Text(
                 'Score Board',
                 textAlign: TextAlign.center, // Tambahkan properti ini
@@ -41,7 +84,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
               child: IconButton(
-                icon: Icon(Icons.home),
+                icon: const Icon(Icons.home),
                 color: Colors.white,
                 iconSize: 40,
                 onPressed: () {
@@ -59,8 +102,8 @@ class _ScoreBoardState extends State<ScoreBoard> {
             ),
           ],
         ),
-        backgroundColor: Color(0xFF572D15),
-        shape: ContinuousRectangleBorder(
+        backgroundColor: const Color(0xFF572D15),
+        shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(70),
           ),
@@ -76,7 +119,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
                 fit: BoxFit.fill, image: AssetImage("assets/scorebg.png")),
           ),
 
-          Positioned(
+          const Positioned(
               top: 150,
               left: 140,
               child: Text("Score",
@@ -95,18 +138,20 @@ class _ScoreBoardState extends State<ScoreBoard> {
                 color: Colors.blueGrey,
                 borderRadius: BorderRadius.circular(150),
               ),
-              child: TextField(
-                controller: scoreController,
-                decoration: InputDecoration(
-                  hintText: '100',
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.all(16),
+              child: Center(
+                child: Text(
+                  scoreController.text,
+                  style: const TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
           ),
-          Positioned(
+
+          const Positioned(
             top: 250, // Atur posisi top
             left: 20, // Atur posisi left
             child: Image(
@@ -117,7 +162,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
             ),
           ),
 
-          Positioned(
+          const Positioned(
               bottom: 250,
               left: 50,
               child: Text("Nama",
@@ -137,19 +182,20 @@ class _ScoreBoardState extends State<ScoreBoard> {
                 color: Colors.orange,
                 borderRadius: BorderRadius.circular(100),
               ),
-              child: TextField(
-                controller: usernameController,
-                decoration: InputDecoration(
-                  hintText: 'Sheren',
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.all(16),
+              child: Center(
+                child: Text(
+                  widget.usernameController
+                      .text, // Display the text from the controller
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
           ),
 
-          Positioned(
+          const Positioned(
               bottom: 250,
               right: 60,
               child: Text("Kelas",
@@ -169,14 +215,16 @@ class _ScoreBoardState extends State<ScoreBoard> {
                 color: Colors.green,
                 borderRadius: BorderRadius.circular(100),
               ),
-              child: TextField(
-                controller: classController,
-                decoration: InputDecoration(
-                  hintText: 'kelas 1',
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.all(16),
+              child: Center(
+                child: Text(
+                  classController.text,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -186,7 +234,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
             child: Container(
               width: size.width,
               height: 70,
-              color: Color(0xFF602c2c),
+              color: const Color(0xFF602c2c),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -197,7 +245,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
               ),
             ),
           ),
-          Positioned(
+          const Positioned(
             bottom: 50, // Atur posisi top
             right: 20, // Atur posisi left
             child: Image(
