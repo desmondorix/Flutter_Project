@@ -176,7 +176,9 @@ class _MainPageState extends State<MainPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ScoreBoard(),
+                      builder: (context) => const ScoreBoard(
+                        usernameController: usernameController,
+                      ),
                     ),
                   );
                 },

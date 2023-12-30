@@ -4,7 +4,9 @@ import 'package:marbel/pages/main_page.dart';
 import 'package:marbel/services.dart';
 
 class ScoreBoard extends StatefulWidget {
-  const ScoreBoard({Key? key}) : super(key: key);
+  final TextEditingController usernameController;
+  const ScoreBoard({Key? key, required this.usernameController})
+      : super(key: key);
 
   @override
   State<ScoreBoard> createState() => _ScoreBoardState();
@@ -92,7 +94,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => MainPage(
-                        usernameController: usernameController,
+                        usernameController: widget.usernameController,
                       ),
                     ),
                   );
