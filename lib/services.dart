@@ -42,50 +42,50 @@ abstract class Services {
     }
   }
 
-static Future<Map?> login({required String username}) async {
-  if (username.isNotEmpty) {
-    String uri = "http://10.0.2.2/study_flutter/login.php";
-    try {
-      var res = await http.post(Uri.parse(uri), body: {
-        "username": username,
-      });
-      if (res.statusCode == 200) {
-        var responseBody = res.body;
-        if (responseBody.isNotEmpty) {
-          var response = jsonDecode(responseBody);
+  static Future<Map?> login({required String username}) async {
+    if (username.isNotEmpty) {
+      String uri = "http://10.0.2.2/study_flutter/login.php";
+      try {
+        var res = await http.post(Uri.parse(uri), body: {
+          "username": username,
+        });
+        if (res.statusCode == 200) {
+          var responseBody = res.body;
+          if (responseBody.isNotEmpty) {
+            var response = jsonDecode(responseBody);
 
-          if (response is Map) {
-            if (response["success"] == true) {
-              // Login successful, return the response
-              return response;
+            if (response is Map) {
+              if (response["success"] == true) {
+                // Login successful, return the response
+                return response;
+              } else {
+                // Login unsuccessful, print error message
+                print("Login failed: ${response['message']}");
+                return null;
+              }
             } else {
-              // Login unsuccessful, print error message
-              print("Login failed: ${response['message']}");
+              print("Invalid server response format: $responseBody");
               return null;
             }
           } else {
-            print("Invalid server response format: $responseBody");
+            print("Empty response body");
             return null;
           }
         } else {
-          print("Empty response body");
+          print("HTTP Error: ${res.statusCode}");
           return null;
         }
-      } else {
-        print("HTTP Error: ${res.statusCode}");
+      } catch (e) {
+        print("Error: $e");
         return null;
       }
-    } catch (e) {
-      print("Error: $e");
+    } else {
+      print("Please provide a username");
       return null;
     }
-  } else {
-    print("Please provide a username");
-    return null;
   }
-}
 
-static Future<Map?> submitScore({
+  static Future<Map?> submitScore({
     required String username,
     required String nilai,
   }) async {
