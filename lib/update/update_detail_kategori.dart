@@ -25,11 +25,11 @@ class update_kategori_detail extends StatefulWidget {
 }
 
 class _update_kategori_detailState extends State<update_kategori_detail> {
-  TextEditingController id_detail=TextEditingController();
-  TextEditingController nama_kategori=TextEditingController();
-  TextEditingController nama_daerah=TextEditingController();
-  TextEditingController asal_daerah=TextEditingController();
-  TextEditingController detail_daerah=TextEditingController();
+  TextEditingController id_detail = TextEditingController();
+  TextEditingController nama_kategori = TextEditingController();
+  TextEditingController nama_daerah = TextEditingController();
+  TextEditingController asal_daerah = TextEditingController();
+  TextEditingController detail_daerah = TextEditingController();
   late String id_kategori;
   File? imagepath;
   String? imagename;
@@ -37,13 +37,12 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
 
   ImagePicker imagePicker = new ImagePicker();
 
-
-  Future<void> getImage() async{
-    var getimage=await imagePicker.pickImage(source:ImageSource.gallery);
+  Future<void> getImage() async {
+    var getimage = await imagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       imagepath = File(getimage!.path);
-      imagename=getimage.path.split('/').last;
-      imagedata=base64Encode(imagepath!.readAsBytesSync());
+      imagename = getimage.path.split('/').last;
+      imagedata = base64Encode(imagepath!.readAsBytesSync());
       print(imagepath);
       print(imagedata);
       print(imagename);
@@ -52,7 +51,8 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
 
   Future<void> updaterecord() async {
     if (imagepath == null) {
-      String uri = "http://10.0.2.2/study_flutter/detail_kategori/update_kategori_detail.php";
+      String uri =
+          "http://10.0.2.2/study_flutter/detail_kategori/update_kategori_detail.php";
       try {
         var res = await http.post(Uri.parse(uri), body: {
           "id_detail": id_detail.text,
@@ -63,18 +63,20 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
         var response = jsonDecode(res.body);
         if (response["success"] == "true") {
           print("Record Updated");
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => view_detail_kategori(
-                  id_kategori, nama_kategori.text ))
-          );
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      view_detail_kategori(id_kategori, nama_kategori.text)));
         } else {
           print("some issue");
         }
       } catch (e) {
         print(e);
       }
-    } else if(imagepath != null){
-      String uri = "http://10.0.2.2/study_flutter/detail_kategori/update_kategori_detail_img.php";
+    } else if (imagepath != null) {
+      String uri =
+          "http://10.0.2.2/study_flutter/detail_kategori/update_kategori_detail_img.php";
       try {
         var res = await http.post(Uri.parse(uri), body: {
           "id_detail": id_detail.text,
@@ -87,10 +89,11 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
         var response = jsonDecode(res.body);
         if (response["success"] == "true") {
           print("Record Updated");
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => view_detail_kategori(
-                  id_kategori, nama_kategori.text ))
-          );
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      view_detail_kategori(id_kategori, nama_kategori.text)));
         } else {
           print("some issue");
         }
@@ -103,14 +106,15 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
   }
 
   void initState() {
-    id_detail.text=widget.id_detail;
-    id_kategori=widget.id_kategori;
-    nama_kategori.text=widget.nama_kategori;
-    nama_daerah.text=widget.nama_daerah;
-    asal_daerah.text=widget.asal_daerah;
-    detail_daerah.text=widget.detail_daerah;
+    id_detail.text = widget.id_detail;
+    id_kategori = widget.id_kategori;
+    nama_kategori.text = widget.nama_kategori;
+    nama_daerah.text = widget.nama_daerah;
+    asal_daerah.text = widget.asal_daerah;
+    detail_daerah.text = widget.detail_daerah;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,11 +122,14 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
         title: Text("Update Data"),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.home, color: Colors.black, size: 35,),
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+              size: 35,
+            ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>MyApp())
-              );
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));
             },
           ),
         ],
@@ -130,56 +137,71 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
       body: ListView(
         children: <Widget>[
           Column(
-            children:[
-              SizedBox(height: 20,),
+            children: [
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 margin: EdgeInsets.only(right: 30, left: 30),
                 child: TextFormField(
                   readOnly: true,
                   controller: id_detail,
-                  decoration: InputDecoration(border: OutlineInputBorder(),
-                      label: Text('ID Detail')),
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), label: Text('ID Detail')),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 margin: EdgeInsets.only(right: 30, left: 30),
                 child: TextFormField(
                   readOnly: true,
                   controller: nama_kategori,
-                  decoration: InputDecoration(border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
                       label: Text('Nama Kategori')),
                 ),
               ),
-
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 margin: EdgeInsets.only(right: 30, left: 30),
                 child: TextFormField(
                   controller: nama_daerah,
-                  decoration: InputDecoration(border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
                       label: Text('Enter nama contoh (Kerak Telor)')),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 margin: EdgeInsets.only(right: 30, left: 30),
                 child: TextFormField(
                   controller: asal_daerah,
-                  decoration: InputDecoration(border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
                       label: Text('Enter Asal Daerah')),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 margin: EdgeInsets.only(right: 30, left: 30),
                 child: TextFormField(
                   controller: detail_daerah,
-                  decoration: InputDecoration(border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
                       label: Text('Enter Detail')),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 alignment: Alignment.center,
                 width: 350,
@@ -189,12 +211,17 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
                 ),
                 child: imagepath != null
                     ? Image.file(imagepath!)
-                    : Text('Image Not Chose Yet', style: const TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.w500),),
+                    : Text(
+                        'Image Not Chose Yet',
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ),
               ),
-              ElevatedButton(onPressed: (){
-                getImage();
-              }, child: Text('Chose Image')),
+              ElevatedButton(
+                  onPressed: () {
+                    getImage();
+                  },
+                  child: Text('Chose Image')),
               Container(
                 margin: EdgeInsets.all(10),
                 child: ElevatedButton(
