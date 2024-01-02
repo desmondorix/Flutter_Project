@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/pages/admin_page.dart';
 import 'package:marbel/pages/home_page.dart';
 import 'package:marbel/pages/main_page.dart';
 import 'package:marbel/services.dart';
@@ -115,42 +116,65 @@ class _RegisterPageState extends State<LoginPage> {
                   )
                 ],
               ),
-              CustomTextFieldHome(label: "Nama", controller: usernameController),
+              CustomTextFieldHome(
+                  label: "Nama", controller: usernameController),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    child: TextButton(onPressed: () async {
-                        String username = usernameController.text.trim();
-                        try {
-                          Map? response = await Services.login(
-                              username: username);
-                          if (mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response!['message'])));
+                      child: TextButton(
+                    onPressed: () async {
+                      String username = usernameController.text.trim();
+                      try {
+                        Map? response =
+                            await Services.login(username: username);
+
+                        if (response!['message'] == 'Login successful') {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(response['message'])));
+
+                          if (username == 'prabowo') {
+                            // Navigasi ke MainPage_admin jika username adalah 'prabowo'
                             Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      MainPage(usernameController: usernameController),
-                                ));
-                          }
-                        } catch (e) {
-                          if (mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(e.toString())));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainPage_admin(token: ""),
+                              ),
+                            );
+                          } else {
+                            // Navigasi ke MainPage biasa jika username bukan 'prabowo'
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainPage(
+                                    usernameController: usernameController),
+                              ),
+                            );
                           }
                         }
-                      }, child: const Row(
+                      } catch (e) {
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(e.toString())));
+                        }
+                      }
+                    },
+                    child: const Row(
                       children: [
                         Text("Masuk",
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
-                        Icon(Icons.login, size: 30, color: Colors.black,)
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                        Icon(
+                          Icons.login,
+                          size: 30,
+                          color: Colors.black,
+                        )
                       ],
-                    ),)
-                  ),
+                    ),
+                  )),
                   const SizedBox(
                     width: 60,
                   ),

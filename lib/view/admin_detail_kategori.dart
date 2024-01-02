@@ -21,11 +21,10 @@ class view_detail_kategori extends StatefulWidget {
 }
 
 class _view_detail_kategoriState extends State<view_detail_kategori> {
-
-  TextEditingController nama_kategori=TextEditingController();
-  TextEditingController caption=TextEditingController();
-  TextEditingController asal_daerah=TextEditingController();
-  TextEditingController detail_daerah=TextEditingController();
+  TextEditingController nama_kategori = TextEditingController();
+  TextEditingController caption = TextEditingController();
+  TextEditingController asal_daerah = TextEditingController();
+  TextEditingController detail_daerah = TextEditingController();
 
   List userdata = [];
 
@@ -36,7 +35,8 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
 
   late String id_kategori;
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2/study_flutter/detail_kategori/view_data_detail.php?id=$id_kategori";
+    String uri =
+        "http://10.0.2.2/study_flutter/detail_kategori/view_data_detail.php?id=$id_kategori";
     try {
       var response = await http.get(Uri.parse(uri));
       setState(() {
@@ -46,8 +46,10 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
       print(e);
     }
   }
+
   Future<void> delrecord(String id) async {
-    String uri = "http://10.0.2.2/study_flutter/detail_kategori/delete_data_detail_kategori.php";
+    String uri =
+        "http://10.0.2.2/study_flutter/detail_kategori/delete_data_detail_kategori.php";
     try {
       final res = await http.post(Uri.parse(uri), body: {"id": id});
       var respon = jsonDecode(res.body);
@@ -61,20 +63,22 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
       print(e);
     }
   }
-  Future<void> uploadImage() async{
-    if(caption.text !=""){
-      try{
-        String uri = "http://10.0.2.2/study_flutter/detail_kategori/insert_detail_kategori.php";
-        var res=await http.post(Uri.parse(uri), body: {
-          "caption":caption.text,
-          "data":imagedata,
-          "name":imagename,
-          "asal_daerah":asal_daerah.text,
-          "id_kategori":id_kategori,
-          "detail_daerah":detail_daerah.text,
+
+  Future<void> uploadImage() async {
+    if (caption.text != "") {
+      try {
+        String uri =
+            "http://10.0.2.2/study_flutter/detail_kategori/insert_detail_kategori.php";
+        var res = await http.post(Uri.parse(uri), body: {
+          "caption": caption.text,
+          "data": imagedata,
+          "name": imagename,
+          "asal_daerah": asal_daerah.text,
+          "id_kategori": id_kategori,
+          "detail_daerah": detail_daerah.text,
         });
         var response = jsonDecode(res.body);
-        if(response["success"]=="true"){
+        if (response["success"] == "true") {
           print("Record Inserted");
           caption.text = "";
           asal_daerah.text = "";
@@ -84,28 +88,30 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
         } else {
           print("some issue");
         }
-      } catch(e){
+      } catch (e) {
         print(e);
       }
     } else {
       print("please fill all fields");
     }
   }
-  Future<void> getImage() async{
-    var getimage=await imagePicker.pickImage(source:ImageSource.gallery);
+
+  Future<void> getImage() async {
+    var getimage = await imagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       imagepath = File(getimage!.path);
-      imagename=getimage.path.split('/').last;
-      imagedata=base64Encode(imagepath!.readAsBytesSync());
+      imagename = getimage.path.split('/').last;
+      imagedata = base64Encode(imagepath!.readAsBytesSync());
       print(imagepath);
       print(imagedata);
       print(imagename);
     });
   }
+
   @override
   void initState() {
-    id_kategori=widget.id_kategori;
-    nama_kategori.text=widget.nama_kategori;
+    id_kategori = widget.id_kategori;
+    nama_kategori.text = widget.nama_kategori;
     getrecord();
     super.initState();
   }
@@ -115,14 +121,17 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("View Data "+nama_kategori.text),
+        title: Text("View Data " + nama_kategori.text),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.home, color: Colors.black, size: 35,),
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+              size: 35,
+            ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>MyApp())
-              );
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));
             },
           ),
         ],
@@ -133,41 +142,43 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
             return Card(
               margin: EdgeInsets.all(10),
               child: ListTile(
-                onTap: (){
+                onTap: () {
                   getrecord();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context)=>admin_detail(
-                        userdata[index]["id_detail"].toString(),
-                        userdata[index]["nama_kategori"],
-                        userdata[index]["nama_daerah"],
-                        userdata[index]["asal_daerah"],
-                        userdata[index]["foto_daerah"],
-                        userdata[index]["detail_daerah"],
-                      ))
-                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => admin_detail(
+                                userdata[index]["id_detail"].toString(),
+                                userdata[index]["nama_kategori"],
+                                userdata[index]["nama_daerah"],
+                                userdata[index]["asal_daerah"],
+                                userdata[index]["foto_daerah"],
+                                userdata[index]["detail_daerah"],
+                              )));
                 },
                 leading: IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: () {
                     getrecord();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context)=>update_kategori_detail(
-                            userdata[index]["id_detail"].toString(),
-                            userdata[index]["id_kategori"].toString(),
-                            userdata[index]["nama_kategori"],
-                            userdata[index]["nama_daerah"],
-                            userdata[index]["asal_daerah"],
-                            userdata[index]["detail_daerah"]
-                        ))
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => update_kategori_detail(
+                                userdata[index]["id_detail"].toString(),
+                                userdata[index]["id_kategori"].toString(),
+                                userdata[index]["nama_kategori"],
+                                userdata[index]["nama_daerah"],
+                                userdata[index]["asal_daerah"],
+                                userdata[index]["detail_daerah"])));
                   },
                 ),
                 title: ClipRRect(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(20),
                   ),
-                  child: Image.network("http://10.0.2.2:8080/study_flutter/detail_kategori/" +
-                      userdata[index]["foto_daerah"],
+                  child: Image.network(
+                    "http://10.0.2.2/study_flutter/detail_kategori/" +
+                        userdata[index]["foto_daerah"],
                     width: size.width,
                     height: 130,
                     fit: BoxFit.cover,
@@ -175,14 +186,19 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
                 ),
                 subtitle: Container(
                   alignment: Alignment.topCenter,
-                  margin: const EdgeInsets.only(top: 8, bottom: 8,),
-                  child: Text('ID: '+userdata[index]["id_detail"].toString() + " " +userdata[index]["nama_daerah"],
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w500)
+                  margin: const EdgeInsets.only(
+                    top: 8,
+                    bottom: 8,
                   ),
+                  child: Text(
+                      'ID: ' +
+                          userdata[index]["id_detail"].toString() +
+                          " " +
+                          userdata[index]["nama_daerah"],
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500)),
                 ),
-                trailing:
-                IconButton(
+                trailing: IconButton(
                   icon: Icon(Icons.delete),
                   onPressed: () => showDialog<String>(
                     context: context,
@@ -213,13 +229,14 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context)=>insertdetailk(
-                id_kategori,
-                nama_kategori.text,
-              ))
-          );
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => insertdetailk(
+                        id_kategori,
+                        nama_kategori.text,
+                      )));
           /*showDialog(
               context: context,
               builder: (context){
@@ -301,4 +318,3 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
     );
   }
 }
-

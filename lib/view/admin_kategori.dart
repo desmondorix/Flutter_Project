@@ -20,7 +20,7 @@ class kategori_admin extends StatefulWidget {
 
 class _kategori_adminState extends State<kategori_admin> {
   List userdata = [];
-  TextEditingController caption=TextEditingController();
+  TextEditingController caption = TextEditingController();
 
   File? imagepath;
   String? imagename;
@@ -28,7 +28,8 @@ class _kategori_adminState extends State<kategori_admin> {
 
   ImagePicker imagePicker = new ImagePicker();
   Future<void> delrecord(String id) async {
-    String uri = "http://10.0.2.2/study_flutter/kategori/delete_data_kategori.php";
+    String uri =
+        "http://10.0.2.2/study_flutter/kategori/delete_data_kategori.php";
     try {
       final res = await http.post(Uri.parse(uri), body: {"id": id});
       var respon = jsonDecode(res.body);
@@ -42,8 +43,10 @@ class _kategori_adminState extends State<kategori_admin> {
       print(e);
     }
   }
+
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2/study_flutter/kategori/view_data_kategori.php";
+    String uri =
+        "http://10.0.2.2/study_flutter/kategori/view_data_kategori.php";
     try {
       var response = await http.get(Uri.parse(uri));
       setState(() {
@@ -54,23 +57,24 @@ class _kategori_adminState extends State<kategori_admin> {
     }
   }
 
-  Future<void> uploadImage() async{
-    if(caption.text !=""){
-      try{
-        String uri = "http://10.0.2.2/study_flutter/kategori/insert_kategori.php";
-        var res=await http.post(Uri.parse(uri), body: {
-          "caption":caption.text,
-          "data":imagedata,
-          "name":imagename,
+  Future<void> uploadImage() async {
+    if (caption.text != "") {
+      try {
+        String uri =
+            "http://10.0.2.2/study_flutter/kategori/insert_kategori.php";
+        var res = await http.post(Uri.parse(uri), body: {
+          "caption": caption.text,
+          "data": imagedata,
+          "name": imagename,
         });
         var response = jsonDecode(res.body);
-        if(response["success"]=="true"){
+        if (response["success"] == "true") {
           print("Record Inserted");
           caption.text = "";
         } else {
           print("some issue");
         }
-      } catch(e){
+      } catch (e) {
         print(e);
       }
     } else {
@@ -78,17 +82,18 @@ class _kategori_adminState extends State<kategori_admin> {
     }
   }
 
-  Future<void> getImage() async{
-    var getimage=await imagePicker.pickImage(source:ImageSource.gallery);
+  Future<void> getImage() async {
+    var getimage = await imagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       imagepath = File(getimage!.path);
-      imagename=getimage.path.split('/').last;
-      imagedata=base64Encode(imagepath!.readAsBytesSync());
+      imagename = getimage.path.split('/').last;
+      imagedata = base64Encode(imagepath!.readAsBytesSync());
       print(imagepath);
       print(imagedata);
       print(imagename);
     });
   }
+
   @override
   void initState() {
     getrecord();
@@ -103,11 +108,14 @@ class _kategori_adminState extends State<kategori_admin> {
         title: Text("View Data Kategori"),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.home, color: Colors.black, size: 35,),
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+              size: 35,
+            ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>MyApp())
-              );
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));
             },
           ),
         ],
@@ -118,33 +126,36 @@ class _kategori_adminState extends State<kategori_admin> {
             return Card(
               margin: EdgeInsets.all(10),
               child: ListTile(
-                onTap: (){
+                onTap: () {
                   getrecord();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context)=>view_detail_kategori(
-                        userdata[index]["id_kategori"].toString(),
-                        userdata[index]["nama_kategori"],
-                      ))
-                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => view_detail_kategori(
+                                userdata[index]["id_kategori"].toString(),
+                                userdata[index]["nama_kategori"],
+                              )));
                 },
                 leading: IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: () {
                     getrecord();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context)=>update_kategori(
-                          userdata[index]["id_kategori"].toString(),
-                          userdata[index]["nama_kategori"],
-                        ))
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => update_kategori(
+                                  userdata[index]["id_kategori"].toString(),
+                                  userdata[index]["nama_kategori"],
+                                )));
                   },
                 ),
                 title: ClipRRect(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(20),
                   ),
-                  child: Image.network("http://10.0.2.2:8080/study_flutter/kategori/" +
-                      userdata[index]["foto_kategori"],
+                  child: Image.network(
+                    "http://10.0.2.2/study_flutter/kategori/" +
+                        userdata[index]["foto_kategori"],
                     width: size.width,
                     height: 130,
                     fit: BoxFit.cover,
@@ -152,14 +163,19 @@ class _kategori_adminState extends State<kategori_admin> {
                 ),
                 subtitle: Container(
                   alignment: Alignment.topCenter,
-                  margin: const EdgeInsets.only(top: 8, bottom: 8,),
-                  child: Text('ID: '+userdata[index]["id_kategori"].toString() + " " +userdata[index]["nama_kategori"],
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w500)
+                  margin: const EdgeInsets.only(
+                    top: 8,
+                    bottom: 8,
                   ),
+                  child: Text(
+                      'ID: ' +
+                          userdata[index]["id_kategori"].toString() +
+                          " " +
+                          userdata[index]["nama_kategori"],
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500)),
                 ),
-                trailing:
-                IconButton(
+                trailing: IconButton(
                   icon: Icon(Icons.delete),
                   onPressed: () => showDialog<String>(
                     context: context,
@@ -190,11 +206,9 @@ class _kategori_adminState extends State<kategori_admin> {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context)=>insertkategori(
-              ))
-          );
+              MaterialPageRoute(builder: (context) => insertkategori()));
 
           /*showDialog(
               context: context,
@@ -246,4 +260,3 @@ class _kategori_adminState extends State<kategori_admin> {
     );
   }
 }
-
