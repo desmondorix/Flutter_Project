@@ -109,10 +109,10 @@ class _MakananState extends State<Makanan> {
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(20),
                                 ),
-                                child: Image.network("http://10.0.2.2:8080/study_flutter/detail_kategori/" +
+                                child: Image.network("http://10.0.2.2/study_flutter/detail_kategori/" +
                                     userdata[index]["foto_daerah"],
                                   width: size.width,
-                                  height: 130,
+                                  height: 125,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -120,7 +120,7 @@ class _MakananState extends State<Makanan> {
                           ),
                           Container(
                             alignment: Alignment.topCenter,
-                            margin: const EdgeInsets.only(top: 8),
+                            margin: const EdgeInsets.only(top: 5),
                             child: Text(userdata[index]["nama_daerah"],
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500),
@@ -128,7 +128,7 @@ class _MakananState extends State<Makanan> {
                           ),
                           Container(
                             alignment: Alignment.topCenter,
-                            margin: const EdgeInsets.only(top: 4),
+                            margin: const EdgeInsets.only(top: 2),
                             child: Text(userdata[index]["asal_daerah"],
                               style: const TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),

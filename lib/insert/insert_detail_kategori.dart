@@ -207,7 +207,16 @@ class _insertdetailkState extends State<insertdetailk> {
               child: Builder(
                 builder: (context) {
                   return ElevatedButton(
-                      onPressed: () {}, child: Text('View data'));
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => view_detail_kategori(
+                                      id_kategori.text,
+                                      nama_kategori.text,
+                                    )));
+                      },
+                      child: Text('View data'));
                 },
               ),
             ),

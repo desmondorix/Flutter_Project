@@ -106,7 +106,7 @@ class _KategoriState extends State<Kategori> {
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(20),
                                 ),
-                                child: Image.network("http://10.0.2.2:8080/study_flutter/kategori/" +
+                                child: Image.network("http://10.0.2.2/study_flutter/kategori/" +
                                     userdata[index]["foto_kategori"],
                                   width: size.width,
                                   height: 130,
