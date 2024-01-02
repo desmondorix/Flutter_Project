@@ -109,7 +109,7 @@ class _MakananState extends State<Makanan> {
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(20),
                                 ),
-                                child: Image.network("http://10.0.2.2:8080/study_flutter/detail_kategori/" +
+                                child: Image.network("http://10.0.2.2/study_flutter/detail_kategori/" +
                                     userdata[index]["foto_daerah"],
                                   width: size.width,
                                   height: 130,

@@ -163,4 +163,3 @@ class _RegisterPageState extends State<LoginPage> {
     );
   }
 }
-
