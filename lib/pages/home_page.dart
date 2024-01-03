@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
             ),
             CustomButtonHome(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
+                  Navigator.pushReplacement(context, MaterialPageRoute(
                     builder: (context) {
                       return const RegisterPage();
                     },
