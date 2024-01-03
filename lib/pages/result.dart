@@ -42,6 +42,7 @@ class ResultScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Quiz Result'),
         ),
         body: Stack(
@@ -88,7 +89,7 @@ class ResultScreen extends StatelessWidget {
                             nilai: score.toString());
 
                         // Navigate to the next page (RewardPage)
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) {
                             return Sertif(usernameController : usernameController);

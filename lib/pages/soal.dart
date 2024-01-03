@@ -11,7 +11,7 @@ class QuizScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Quiz',
           style: TextStyle(
             color: Colors.black, // Ubah warna teks menjadi hitam
@@ -213,7 +213,7 @@ class _QuizBodyState extends State<QuizBody> {
     ).then((value) {
       if (value != null && value) {
         // User pressed 'Yes', navigate to the ResultScreen
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => ResultScreen(answers: answers, usernameController: widget.usernameController)),
         );
