@@ -95,11 +95,7 @@ class _RegisterPageState extends State<LoginPage> {
                 children: [
                   IconButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return const HomePage();
-                          },
-                        ));
+                        Navigator.of(context).pop();
                       },
                       icon: const Icon(Icons.chevron_left_rounded, size: 40)),
                   const Icon(
@@ -134,23 +130,26 @@ class _RegisterPageState extends State<LoginPage> {
                           ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text(response['message'])));
 
-                          if (username == 'PR480W02024') {
-                            // Navigasi ke MainPage_admin jika username adalah PR480W02024'
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MainPage_admin(token: ""),
-                              ),
-                            );
-                          } else {
-                            // Navigasi ke MainPage biasa jika username bukan 'prabowo'
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MainPage(
-                                    usernameController: usernameController),
-                              ),
-                            );
+                          if (mounted) {
+                            if (username == 'PR480W02024') {
+                              // Navigasi ke MainPage_admin jika username adalah PR480W02024'
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MainPage_admin(token: ""),
+                                ),
+                              );
+                            } else {
+                              // Navigasi ke MainPage biasa jika username bukan 'prabowo'
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainPage(
+                                      usernameController: usernameController),
+                                ),
+                              );
+                            }
                           }
                         }
                       } catch (e) {

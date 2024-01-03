@@ -23,7 +23,8 @@ class _MakananState extends State<Makanan> {
   List userdata = [];
 
   Future<void> getrecord() async {
-    String uri = "http://10.0.2.2/study_flutter/detail_kategori/view_data_detail.php?id=$id_kategori";
+    String uri =
+        "http://10.0.2.2/study_flutter/detail_kategori/view_data_detail.php?id=$id_kategori";
     try {
       var response = await http.get(Uri.parse(uri));
       setState(() {
@@ -33,9 +34,10 @@ class _MakananState extends State<Makanan> {
       print(e);
     }
   }
+
   void initState() {
-    id_kategori=widget.id_kategori;
-    nama_kategori=widget.nama_kategori;
+    id_kategori = widget.id_kategori;
+    nama_kategori = widget.nama_kategori;
     getrecord();
     super.initState();
   }
@@ -52,8 +54,7 @@ class _MakananState extends State<Makanan> {
             size: 45,
           ),
           onPressed: () {
-            Navigator.pop(context,
-            );
+            Navigator.of(context).pop();
           },
         ),
         title: Text(
@@ -66,8 +67,7 @@ class _MakananState extends State<Makanan> {
         ),
         backgroundColor: Color(0xFFD2B69F),
       ),
-      body:
-      DecoratedBox(
+      body: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/bg_batik.png"), fit: BoxFit.fill),
@@ -76,7 +76,7 @@ class _MakananState extends State<Makanan> {
           padding: const EdgeInsets.only(top: 15.0),
           child: GridView.builder(
               gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: userdata.length,
               itemBuilder: (BuildContext context, index) {
                 return SizedBox(
@@ -92,25 +92,29 @@ class _MakananState extends State<Makanan> {
                           Material(
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 getrecord();
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context)=>Detailk(
-                                      userdata[index]["id_kategori"].toString(),
-                                      userdata[index]["nama_kategori"],
-                                      userdata[index]["nama_daerah"],
-                                      userdata[index]["asal_daerah"],
-                                      userdata[index]["foto_daerah"],
-                                      userdata[index]["detail_daerah"].toString(),
-                                    ))
-                                );
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Detailk(
+                                              userdata[index]["id_kategori"]
+                                                  .toString(),
+                                              userdata[index]["nama_kategori"],
+                                              userdata[index]["nama_daerah"],
+                                              userdata[index]["asal_daerah"],
+                                              userdata[index]["foto_daerah"],
+                                              userdata[index]["detail_daerah"]
+                                                  .toString(),
+                                            )));
                               },
                               child: ClipRRect(
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(20),
                                 ),
-                                child: Image.network("http://10.0.2.2/study_flutter/detail_kategori/" +
-                                    userdata[index]["foto_daerah"],
+                                child: Image.network(
+                                  "http://10.0.2.2/study_flutter/detail_kategori/" +
+                                      userdata[index]["foto_daerah"],
                                   width: size.width,
                                   height: 125,
                                   fit: BoxFit.cover,
@@ -121,7 +125,8 @@ class _MakananState extends State<Makanan> {
                           Container(
                             alignment: Alignment.topCenter,
                             margin: const EdgeInsets.only(top: 5),
-                            child: Text(userdata[index]["nama_daerah"],
+                            child: Text(
+                              userdata[index]["nama_daerah"],
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
@@ -129,15 +134,15 @@ class _MakananState extends State<Makanan> {
                           Container(
                             alignment: Alignment.topCenter,
                             margin: const EdgeInsets.only(top: 2),
-                            child: Text(userdata[index]["asal_daerah"],
+                            child: Text(
+                              userdata[index]["asal_daerah"],
                               style: const TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             ),
                           ),
                         ],
                       ),
-                    )
-                );
+                    ));
               }),
         ),
       ),
