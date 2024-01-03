@@ -60,14 +60,7 @@ class _KategoriState extends State<Kategori> {
         backgroundColor: Colors.grey[400],
         foregroundColor: Colors.black,
         centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.logout, color: Colors.black, size: 35,),
-            onPressed: () {
-            },
-          ),
-        ],
-      ),
+              ),
       body: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(

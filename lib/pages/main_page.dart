@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marbel/pages/home_page.dart';
 import 'package:marbel/pages/scoreboardPage.dart';
 import 'package:marbel/pages/soal.dart';
 import 'package:marbel/view/kategori.dart';
@@ -36,7 +37,9 @@ class _MainPageState extends State<MainPage> {
               color: Colors.black,
               size: 35,
             ),
-            onPressed: () {},
+            onPressed: () {
+              _showLogoutDialog();
+            },
           ),
         ],
       ),
@@ -188,6 +191,40 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
+    );
+  }
+
+  void _showLogoutDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Logout"),
+          content: const Text("Apakah Anda yakin ingin Keluar?"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("No"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Navigate to the login page when user confirms logout
+                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+              style: TextButton.styleFrom(
+                primary: Colors.red, // Set the text color to red
+              ),
+              child: const Text("Yes"),
+            ),
+          ],
+        );
+      },
     );
   }
 }
