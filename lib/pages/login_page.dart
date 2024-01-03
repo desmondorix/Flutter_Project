@@ -134,8 +134,8 @@ class _RegisterPageState extends State<LoginPage> {
                           ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text(response['message'])));
 
-                          if (username == 'prabowo') {
-                            // Navigasi ke MainPage_admin jika username adalah 'prabowo'
+                          if (username == 'PR480W02024') {
+                            // Navigasi ke MainPage_admin jika username adalah PR480W02024'
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
