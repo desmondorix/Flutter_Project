@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/home_page.dart';
 import 'package:marbel/pages/main_page.dart';
+import 'package:marbel/pages/scoreboardPage.dart';
 
 class Sertif extends StatelessWidget {
   final TextEditingController usernameController;
@@ -144,11 +145,10 @@ class Sertif extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MainPage(
-                                    usernameController: usernameController),
+                                builder: (context) => ScoreBoard(usernameController: usernameController)
                               ),
                             );
                           },

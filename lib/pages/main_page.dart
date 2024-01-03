@@ -136,7 +136,7 @@ class _MainPageState extends State<MainPage> {
                   minimumSize: const Size(250, 50),
                 ),
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => QuizScreen(
@@ -173,7 +173,7 @@ class _MainPageState extends State<MainPage> {
                   minimumSize: const Size(250, 50),
                 ),
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => ScoreBoard(

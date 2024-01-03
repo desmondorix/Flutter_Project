@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/budaya_page.dart';
 import 'package:marbel/pages/main_page.dart';
+import 'package:marbel/pages/sertif.dart';
 import 'package:marbel/services.dart';
 
 class ScoreBoard extends StatefulWidget {
@@ -66,6 +67,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center, // Tambahkan properti ini
           children: [
@@ -90,12 +92,10 @@ class _ScoreBoardState extends State<ScoreBoard> {
                 color: Colors.white,
                 iconSize: 40,
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MainPage(
-                        usernameController: widget.usernameController,
-                      ),
+                      builder: (context) => MainPage(usernameController: widget.usernameController),
                     ),
                   );
                   // Your home navigation logic goes here
