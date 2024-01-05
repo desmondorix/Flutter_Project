@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
+import 'package:marbel/pages/admin_page.dart';
+
 class detail_anggota extends StatefulWidget {
   const detail_anggota({super.key});
 
@@ -52,6 +54,19 @@ class _detail_anggotaState extends State<detail_anggota> {
     return Scaffold(
       appBar: AppBar(
         title: Text("View Data"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+              size: 35,
+            ),
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
+            },
+          ),
+        ],
       ),
       body: ListView.builder(
           itemCount: userdata.length,
