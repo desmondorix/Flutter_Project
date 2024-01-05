@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:marbel/pages/admin_page.dart';
 
 import '../main.dart';
 import '../view/admin_detail_kategori.dart';
@@ -128,8 +129,8 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
               size: 35,
             ),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
             },
           ),
         ],

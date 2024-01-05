@@ -94,7 +94,7 @@ class _MakananState extends State<Makanan> {
                             child: InkWell(
                               onTap: () {
                                 getrecord();
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Detailk(

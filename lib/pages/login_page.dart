@@ -131,7 +131,7 @@ class _RegisterPageState extends State<LoginPage> {
                               SnackBar(content: Text(response['message'])));
 
                           if (mounted) {
-                            if (username == 'PR480W02024') {
+                            if (username == 'jopang') {
                               // Navigasi ke MainPage_admin jika username adalah PR480W02024'
                               Navigator.pushReplacement(
                                 context,
