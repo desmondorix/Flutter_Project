@@ -69,7 +69,7 @@ class _DetailkState extends State<Detailk> {
           ),
           child: SizedBox(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
               child: Column(children: [
                 SizedBox(
                   width: size.width,
@@ -82,6 +82,7 @@ class _DetailkState extends State<Detailk> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
+                          SizedBox(height: 10,),
                           ClipRRect(
                             borderRadius: const BorderRadius.all(
                               Radius.circular(20),
