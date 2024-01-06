@@ -82,7 +82,7 @@ class _DetailkState extends State<Detailk> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           ClipRRect(
                             borderRadius: const BorderRadius.all(
                               Radius.circular(20),
