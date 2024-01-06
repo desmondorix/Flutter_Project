@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marbel/widgets/custom_button_home.dart';
 import 'package:marbel/pages/login_page.dart';
 import 'package:marbel/pages/register_page.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -81,11 +82,21 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Icon(
-              Icons.person_rounded,
-              size: 70,
-              color: Colors.black,
+            // const Icon(
+            //   Icons.person_rounded,
+            //   size: 70,
+            //   color: Colors.black,
+            // ),
+
+            ElevatedButton(
+              onPressed: () {
+                final player = AudioPlayer();
+                player.play(AssetSource('assets/bgson.mp3'));
+                print('Tombol diklik!');
+              },
+              child: Text('Klik Saya'),
             ),
+
             CustomButtonHome(
                 onTap: () {
                   Navigator.pushReplacement(context, MaterialPageRoute(
