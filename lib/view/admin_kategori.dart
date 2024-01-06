@@ -115,8 +115,7 @@ class _kategori_adminState extends State<kategori_admin> {
         ),
         onPressed: () {
           Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => MainPage_admin(token: ""))
+              context, MaterialPageRoute(builder: (context) => MainPage_admin(token: ""))
           );
         },
       ),
