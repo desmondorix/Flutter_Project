@@ -48,7 +48,7 @@ class _MakananState extends State<Makanan> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_circle_left_outlined,
             color: Color(0xFF572D15),
             size: 45,
@@ -60,15 +60,15 @@ class _MakananState extends State<Makanan> {
         title: Text(
           nama_kategori,
           style: GoogleFonts.montserrat(
-            color: Color(0xFF572D15),
+            color: const Color(0xFF572D15),
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Color(0xFFD2B69F),
+        backgroundColor: const Color(0xFFD2B69F),
       ),
       body: DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/bg_batik.png"), fit: BoxFit.fill),
         ),
@@ -76,25 +76,25 @@ class _MakananState extends State<Makanan> {
           padding: const EdgeInsets.only(top: 15.0),
           child: GridView.builder(
               gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: userdata.length,
               itemBuilder: (BuildContext context, index) {
                 return SizedBox(
                     width: size.width,
                     child: Card(
                       elevation: 10,
-                      color: Color(0xFFCF9C6F),
+                      color: const Color(0xFFCF9C6F),
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20))),
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       child: Column(
                         children: [
                           Material(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius: const BorderRadius.all(Radius.circular(20)),
                             child: InkWell(
                               onTap: () {
                                 getrecord();
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Detailk(

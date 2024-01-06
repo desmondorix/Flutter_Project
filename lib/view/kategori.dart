@@ -49,20 +49,20 @@ class _KategoriState extends State<Kategori> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        shape: ContinuousRectangleBorder(
+        shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(50),
           ),
         ),
-        title: Text('Kategori Budaya',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+        title: const Text('Kategori Budaya',
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.grey[400],
         foregroundColor: Colors.black,
         centerTitle: true,
               ),
       body: DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/bg_batik.png"), fit: BoxFit.fill),
         ),
@@ -70,25 +70,25 @@ class _KategoriState extends State<Kategori> {
           padding: const EdgeInsets.only(top: 15.0),
           child: GridView.builder(
               gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: userdata.length,
               itemBuilder: (BuildContext context, index) {
                 return SizedBox(
                     width: size.width,
                     child: Card(
                       elevation: 10,
-                      color: Color(0xFFCF9C6F),
+                      color: const Color(0xFFCF9C6F),
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20))),
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       child: Column(
                         children: [
                           Material(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius: const BorderRadius.all(Radius.circular(20)),
                             child: InkWell(
                               onTap: (){
                                 getrecord();
-                                Navigator.pushReplacement(context,
+                                Navigator.push(context,
                                     MaterialPageRoute(builder: (context)=>Makanan(
                                         userdata[index]["id_kategori"].toString(),
                                         userdata[index]["nama_kategori"]

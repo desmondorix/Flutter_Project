@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'detail_kategori.dart';
-import 'kategori.dart';
+// import 'detail_kategori.dart';
+// import 'kategori.dart';
 
 class Detailk extends StatefulWidget {
   String id_kategori;
@@ -43,7 +43,7 @@ class _DetailkState extends State<Detailk> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_circle_left_outlined,
             color: Color(0xFF572D15),
             size: 45,
@@ -55,15 +55,15 @@ class _DetailkState extends State<Detailk> {
         title: Text(
           nama_daerah,
           style: GoogleFonts.montserrat(
-            color: Color(0xFF572D15),
+            color: const Color(0xFF572D15),
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Color(0xFFD2B69F),
+        backgroundColor: const Color(0xFFD2B69F),
       ),
       body: DecoratedBox(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/bg_batik.png"), fit: BoxFit.fill),
           ),
@@ -82,7 +82,7 @@ class _DetailkState extends State<Detailk> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           ClipRRect(
@@ -113,31 +113,31 @@ class _DetailkState extends State<Detailk> {
                                         Text(
                                           "Nama: " + nama_daerah,
                                           style: GoogleFonts.montserrat(
-                                            color: Color(0xFF572D15),
+                                            color: const Color(0xFF572D15),
                                             fontSize: 17,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           textAlign: TextAlign.left,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 2,
                                         ),
                                         Text(
                                           "Asal: " + asal_daerah,
                                           style: GoogleFonts.montserrat(
-                                            color: Color(0xFF572D15),
+                                            color: const Color(0xFF572D15),
                                             fontSize: 17,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           textAlign: TextAlign.left,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 2,
                                         ),
                                         Text(
                                           "Kategori: " + nama_kategori,
                                           style: GoogleFonts.montserrat(
-                                            color: Color(0xFF572D15),
+                                            color: const Color(0xFF572D15),
                                             fontSize: 17,
                                             fontWeight: FontWeight.bold,
                                           ),
