@@ -14,37 +14,37 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  bool isPlay = false;
+
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final player = AudioPlayer();
+
     return Scaffold(
       backgroundColor: const Color(0xFFD8DAD9),
       appBar: AppBar(
         title: Row(
           children: [
             IconButton(
-              icon: const Icon(
-                Icons.volume_up,
+              onPressed: () {
+                setState(() {
+                  isPlay = !isPlay;
+                });
+                if (isPlay) {
+                  player.play(AssetSource('bgson.mp3'));
+                } else {
+                  player.stop();
+                }
+              },
+              icon: Icon(
+                isPlay ? Icons.volume_up : Icons.volume_off,
                 color: Colors.black,
                 size: 30,
               ),
-              onPressed: () {
-                player.play(AssetSource('bgson.mp3'));
-              },
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.volume_off,
-                color: Colors.black,
-                size: 30,
-              ),
-              onPressed: () {
-                player.stop();
-              },
             ),
             const SizedBox(
                 width:
-                    48), // Memberikan sedikit ruang antara ikon volume dan teks "MARBEL"
+                    90), 
             const Text(
               'MARBEL',
               style: TextStyle(fontWeight: FontWeight.bold),
