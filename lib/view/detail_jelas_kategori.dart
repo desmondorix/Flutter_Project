@@ -169,6 +169,91 @@ class _DetailkState extends State<Detailk> {
                           ),
                         ],
                       ),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                          child: Image.network(
+                            "http://10.0.2.2/study_flutter/detail_kategori/" +
+                                foto_daerah,
+                            width: size.width,
+                            height: 165,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(
+                                      top: 10, left: 10, right: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Nama: " + nama_daerah,
+                                        style: GoogleFonts.montserrat(
+                                          color: Color(0xFF572D15),
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                      SizedBox(
+                                        height: 2,
+                                      ),
+                                      Text(
+                                        "Asal: " + asal_daerah,
+                                        style: GoogleFonts.montserrat(
+                                          color: Color(0xFF572D15),
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                      SizedBox(
+                                        height: 2,
+                                      ),
+                                      Text(
+                                        "Kategori: " + nama_kategori,
+                                        style: GoogleFonts.montserrat(
+                                          color: Color(0xFF572D15),
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 10),
+                                      child: Column(children: [
+                                        SizedBox(
+                                          width: 300,
+                                          child: Text(
+                                            detail_daerah,
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 12,
+                                            ),
+                                            textAlign: TextAlign.justify,
+                                          ),
+                                        ),
+                                      ])),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
