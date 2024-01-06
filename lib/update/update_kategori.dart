@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:marbel/pages/admin_page.dart';
 
 
 import '../main.dart';
@@ -103,8 +104,8 @@ class _update_kategoriState extends State<update_kategori> {
           IconButton(
             icon: Icon(Icons.home, color: Colors.black, size: 35,),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>MyApp())
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: ""))
               );
             },
           ),

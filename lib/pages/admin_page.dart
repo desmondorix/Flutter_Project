@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:marbel/pages/home_page.dart';
 import 'dart:convert';
 import 'dart:async';
 
@@ -22,7 +23,15 @@ class _MainPage_adminState extends State<MainPage_admin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Admin'),
+        title: Text('Admin Page'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.logout, color: Colors.black, size: 35,),
+            onPressed: () {
+              _showLogoutDialog();
+            },
+          ),
+        ],
       ),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +44,7 @@ class _MainPage_adminState extends State<MainPage_admin> {
                 builder: (context) {
                   return ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => kategori_admin()));
@@ -55,7 +64,7 @@ class _MainPage_adminState extends State<MainPage_admin> {
                 builder: (context) {
                   return ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => detail_anggota()));
@@ -69,6 +78,39 @@ class _MainPage_adminState extends State<MainPage_admin> {
               ),
             ),
           ]),
+    );
+  }
+  void _showLogoutDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Logout"),
+          content: const Text("Apakah Anda yakin ingin Keluar?"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("No"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Navigate to the login page when user confirms logout
+                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+              style: TextButton.styleFrom(
+                primary: Colors.red, // Set the text color to red
+              ),
+              child: const Text("Yes"),
+            ),
+          ],
+        );
+      },
     );
   }
 }

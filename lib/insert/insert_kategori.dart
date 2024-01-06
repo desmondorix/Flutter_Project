@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:marbel/pages/admin_page.dart';
 import '../view/admin_kategori.dart';
 import 'dart:convert';
 import 'dart:async';
@@ -73,8 +74,8 @@ class _insertkategoriState extends State<insertkategori> {
           IconButton(
             icon: Icon(Icons.home, color: Colors.black, size: 35,),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>MyApp())
+              Navigator.pop(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: ""))
               );
             },
           ),

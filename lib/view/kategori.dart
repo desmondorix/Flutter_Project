@@ -88,7 +88,7 @@ class _KategoriState extends State<Kategori> {
                             child: InkWell(
                               onTap: (){
                                 getrecord();
-                                Navigator.push(context,
+                                Navigator.pushReplacement(context,
                                     MaterialPageRoute(builder: (context)=>Makanan(
                                         userdata[index]["id_kategori"].toString(),
                                         userdata[index]["nama_kategori"]

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marbel/pages/admin_page.dart';
+import 'package:marbel/view/admin_detail_kategori.dart';
+import 'package:marbel/view/admin_kategori.dart';
 
 import '../main.dart';
 import 'detail_kategori.dart';
 import 'kategori.dart';
 
 class admin_detail extends StatefulWidget {
+  String id_kategori;
+
   String id_detail;
   String nama_kategori;
   String nama_daerah;
@@ -14,13 +19,15 @@ class admin_detail extends StatefulWidget {
   String detail_daerah;
 
   admin_detail(this.id_detail, this.nama_kategori, this.nama_daerah,
-      this.asal_daerah, this.foto_daerah, this.detail_daerah);
+      this.asal_daerah, this.foto_daerah, this.detail_daerah, this.id_kategori);
 
   @override
   State<admin_detail> createState() => _admin_detailState();
 }
 
 class _admin_detailState extends State<admin_detail> {
+  late String id_kategori;
+
   late String id_detail;
   late String nama_kategori;
   late String nama_daerah;
@@ -29,6 +36,8 @@ class _admin_detailState extends State<admin_detail> {
   late String detail_daerah;
 
   void initState() {
+    id_kategori = widget.id_kategori;
+
     id_detail = widget.id_detail;
     nama_kategori = widget.nama_kategori;
     nama_daerah = widget.nama_daerah;
@@ -44,6 +53,20 @@ class _admin_detailState extends State<admin_detail> {
     return Scaffold(
         appBar: AppBar(
           title: Text("View Data " + nama_daerah),
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+              size: 35,
+            ),
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          view_detail_kategori(id_kategori, nama_kategori)));
+            },
+          ),
           actions: <Widget>[
             IconButton(
               icon: Icon(
@@ -52,8 +75,8 @@ class _admin_detailState extends State<admin_detail> {
                 size: 35,
               ),
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyApp()));
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
               },
             ),
           ],

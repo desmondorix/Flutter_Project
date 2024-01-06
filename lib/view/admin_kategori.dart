@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 import 'package:image_picker/image_picker.dart';
+import 'package:marbel/pages/admin_page.dart';
 import 'dart:io';
 import '../insert/insert_detail_kategori.dart';
 import '../insert/insert_kategori.dart';
@@ -105,7 +106,19 @@ class _kategori_adminState extends State<kategori_admin> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("View Data Kategori"),
+      title: Text("View Data Kategori"),
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+          size: 35,
+        ),
+        onPressed: () {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => MainPage_admin(token: ""))
+          );
+        },
+      ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -114,8 +127,8 @@ class _kategori_adminState extends State<kategori_admin> {
               size: 35,
             ),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
             },
           ),
         ],
@@ -128,7 +141,7 @@ class _kategori_adminState extends State<kategori_admin> {
               child: ListTile(
                 onTap: () {
                   getrecord();
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => view_detail_kategori(
@@ -140,7 +153,7 @@ class _kategori_adminState extends State<kategori_admin> {
                   icon: Icon(Icons.edit),
                   onPressed: () {
                     getrecord();
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => update_kategori(

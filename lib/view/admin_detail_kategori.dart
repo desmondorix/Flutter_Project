@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 import 'package:image_picker/image_picker.dart';
+import 'package:marbel/pages/admin_page.dart';
+import 'package:marbel/view/admin_kategori.dart';
 import '../update/update_detail_kategori.dart';
 import 'dart:io';
 import '../insert/insert_detail_kategori.dart';
@@ -122,6 +124,19 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
     return Scaffold(
       appBar: AppBar(
         title: Text("View Data " + nama_kategori.text),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 30,
+          ),
+          onPressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => kategori_admin())
+            );
+          },
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -130,8 +145,8 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
               size: 35,
             ),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
             },
           ),
         ],
@@ -144,7 +159,7 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
               child: ListTile(
                 onTap: () {
                   getrecord();
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => admin_detail(
@@ -154,13 +169,14 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
                                 userdata[index]["asal_daerah"],
                                 userdata[index]["foto_daerah"],
                                 userdata[index]["detail_daerah"],
+                            userdata[index]["id_kategori"],
                               )));
                 },
                 leading: IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: () {
                     getrecord();
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => update_kategori_detail(
@@ -230,7 +246,7 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                   builder: (context) => insertdetailk(
