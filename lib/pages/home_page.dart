@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.white.withOpacity(0.7),
                       ),
                       child: const Text(
-                        " Welcome to Marbel ",
+                        " Selamat datang di Marbel ",
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.w900),
                       )),
@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
                     },
                   ));
                 },
-                buttonTextHome: "LOGIN"),
+                buttonTextHome: "MASUK"),
             const SizedBox(
               height: 10,
             ),
@@ -106,7 +106,7 @@ class HomePage extends StatelessWidget {
                     },
                   ));
                 },
-                buttonTextHome: "REGISTER"),
+                buttonTextHome: "DAFTAR"),
           ],
         ),
       ),

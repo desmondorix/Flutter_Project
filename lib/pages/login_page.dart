@@ -64,7 +64,7 @@ class _RegisterPageState extends State<LoginPage> {
                           color: Colors.white.withOpacity(0.7),
                         ),
                         child: const Text(
-                          " Welcome to Marbel ",
+                          " Selamat Datang di Marbel ",
                           style: TextStyle(
                               fontSize: 30, fontWeight: FontWeight.w900),
                         )),
@@ -104,7 +104,7 @@ class _RegisterPageState extends State<LoginPage> {
                     color: Colors.black,
                   ),
                   const SizedBox(width: 15),
-                  const Text('LOGIN',
+                  const Text('MASUK',
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                   const SizedBox(

@@ -174,7 +174,7 @@ class _MainPageState extends State<MainPage> {
                   );
                 },
                 child: const Text(
-                  'Quiz',
+                  'Kuis',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -212,7 +212,7 @@ class _MainPageState extends State<MainPage> {
                   );
                 },
                 child: const Text(
-                  'History',
+                  'Histori',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),

@@ -74,7 +74,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
             // Score Board
             const Expanded(
               child: Text(
-                'Score Board',
+                'Papan Skor',
                 textAlign: TextAlign.center, // Tambahkan properti ini
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -95,7 +95,8 @@ class _ScoreBoardState extends State<ScoreBoard> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MainPage(usernameController: widget.usernameController),
+                      builder: (context) => MainPage(
+                          usernameController: widget.usernameController),
                     ),
                   );
                   // Your home navigation logic goes here
@@ -123,8 +124,8 @@ class _ScoreBoardState extends State<ScoreBoard> {
 
           const Positioned(
               top: 150,
-              left: 140,
-              child: Text("Score",
+              left: 150,
+              child: Text("Skor",
                   style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
