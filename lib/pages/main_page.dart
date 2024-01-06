@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage> {
                 size: 30,
               ),
               onPressed: () {
-                player.play(AssetSource('bgson.mp3'));
+                player.play(AssetSource('gamelan.mp3'));
               },
             ),
             IconButton(
