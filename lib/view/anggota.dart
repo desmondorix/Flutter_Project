@@ -93,7 +93,8 @@ class _detail_anggotaState extends State<detail_anggota> {
                   onPressed: () => showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
-                      title: const Text('Delete'),
+                      title:
+                      const Text('Delete'),
                       content: const Text('Apakah ingin Hapus Data ini?'),
                       actions: <Widget>[
                         TextButton(
