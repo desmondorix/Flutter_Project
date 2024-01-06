@@ -3,6 +3,7 @@ import 'package:marbel/pages/home_page.dart';
 import 'package:marbel/pages/scoreboardPage.dart';
 import 'package:marbel/pages/soal.dart';
 import 'package:marbel/view/kategori.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class MainPage extends StatefulWidget {
   final TextEditingController usernameController;
@@ -15,16 +16,44 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final player = AudioPlayer();
     return Scaffold(
       backgroundColor: const Color(0xFFD8DAD9),
       appBar: AppBar(
-        title: const Text(
-          'MARBEL',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Row(
+          children: [
+            IconButton(
+              icon: const Icon(
+                Icons.volume_up,
+                color: Colors.black,
+                size: 30,
+              ),
+              onPressed: () {
+                player.play(AssetSource('bgson.mp3'));
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.volume_off,
+                color: Colors.black,
+                size: 30,
+              ),
+              onPressed: () {
+                player.stop();
+              },
+            ),
+            const SizedBox(
+                width:
+                    48), // Memberikan sedikit ruang antara ikon volume dan teks "MARBEL"
+            const Text(
+              'MARBEL',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
         backgroundColor: Colors.grey[400],
         foregroundColor: Colors.black,
-        centerTitle: true,
+        centerTitle: false, // Tidak perlu lagi pusatkan judul
         shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(50),
