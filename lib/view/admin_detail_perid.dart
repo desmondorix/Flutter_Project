@@ -60,11 +60,7 @@ class _admin_detailState extends State<admin_detail> {
               size: 35,
             ),
             onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          view_detail_kategori(id_kategori, nama_kategori)));
+              Navigator.of(context).pop();
             },
           ),
           actions: <Widget>[

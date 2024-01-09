@@ -44,7 +44,7 @@ class _MainPage_adminState extends State<MainPage_admin> {
                 builder: (context) {
                   return ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => kategori_admin()));
@@ -64,7 +64,7 @@ class _MainPage_adminState extends State<MainPage_admin> {
                 builder: (context) {
                   return ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => detail_anggota()));

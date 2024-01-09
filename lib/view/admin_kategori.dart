@@ -107,18 +107,6 @@ class _kategori_adminState extends State<kategori_admin> {
     return Scaffold(
       appBar: AppBar(
       title: Text("View Data Kategori"),
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-          size: 35,
-        ),
-        onPressed: () {
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => MainPage_admin(token: ""))
-          );
-        },
-      ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -127,8 +115,7 @@ class _kategori_adminState extends State<kategori_admin> {
               size: 35,
             ),
             onPressed: () {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
+              Navigator.of(context).pop();
             },
           ),
         ],
@@ -141,7 +128,7 @@ class _kategori_adminState extends State<kategori_admin> {
               child: ListTile(
                 onTap: () {
                   getrecord();
-                  Navigator.pushReplacement(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => view_detail_kategori(
@@ -153,7 +140,7 @@ class _kategori_adminState extends State<kategori_admin> {
                   icon: Icon(Icons.edit),
                   onPressed: () {
                     getrecord();
-                    Navigator.pushReplacement(
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => update_kategori(

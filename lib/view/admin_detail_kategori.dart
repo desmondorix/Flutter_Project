@@ -131,10 +131,7 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
             size: 30,
           ),
           onPressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => kategori_admin())
-            );
+            Navigator.of(context).pop();
           },
         ),
         actions: <Widget>[
@@ -159,7 +156,7 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
               child: ListTile(
                 onTap: () {
                   getrecord();
-                  Navigator.pushReplacement(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => admin_detail(
@@ -176,7 +173,7 @@ class _view_detail_kategoriState extends State<view_detail_kategori> {
                   icon: Icon(Icons.edit),
                   onPressed: () {
                     getrecord();
-                    Navigator.pushReplacement(
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => update_kategori_detail(

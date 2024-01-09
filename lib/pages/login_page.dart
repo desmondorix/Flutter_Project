@@ -95,7 +95,9 @@ class _RegisterPageState extends State<LoginPage> {
                 children: [
                   IconButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                          return HomePage();
+                        },));
                       },
                       icon: const Icon(Icons.chevron_left_rounded, size: 40)),
                   const Icon(
@@ -155,7 +157,7 @@ class _RegisterPageState extends State<LoginPage> {
                       } catch (e) {
                         if (mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(e.toString())));
+                              SnackBar(content: Text("Nama Salah")));
                         }
                       }
                     },

@@ -107,11 +107,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return const HomePage();
-                        },
-                      ));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                        return HomePage();
+                      },));
                     },
                     icon: const Icon(Icons.chevron_left_rounded, size: 30),
                   ),

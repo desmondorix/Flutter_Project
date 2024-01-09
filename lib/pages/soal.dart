@@ -12,7 +12,7 @@ class QuizScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Quiz',
+          'Kuis',
           style: TextStyle(
             color: Colors.black, // Ubah warna teks menjadi hitam
           ),
@@ -156,7 +156,7 @@ class _QuizBodyState extends State<QuizBody> {
                   });
                 }
               },
-              child: Text('Previous'),
+              child: Text('Sebelumnya'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -169,7 +169,7 @@ class _QuizBodyState extends State<QuizBody> {
                   _showConfirmationDialog();
                 }
               },
-              child: Text('Next'),
+              child: Text('Selanjutnya'),
             ),
           ],
         ),

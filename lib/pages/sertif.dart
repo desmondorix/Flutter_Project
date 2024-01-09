@@ -14,7 +14,7 @@ class Sertif extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Reward',
+          'Hadiah',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 30,

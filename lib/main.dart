@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:marbel/pages/home_page.dart';
-import 'package:marbel/pages/senjata.dart';
 
 void main() {
   runApp(const MyApp());

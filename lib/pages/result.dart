@@ -43,7 +43,7 @@ class ResultScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('Quiz Result'),
+          title: const Text('Hasil Kuis'),
         ),
         body: Stack(
           fit: StackFit.expand,
