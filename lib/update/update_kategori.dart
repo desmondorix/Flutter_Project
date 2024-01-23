@@ -104,9 +104,8 @@ class _update_kategoriState extends State<update_kategori> {
           IconButton(
             icon: Icon(Icons.home, color: Colors.black, size: 35,),
             onPressed: () {
-              Navigator.pop(
-                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: ""))
-              );
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
             },
           ),
         ],

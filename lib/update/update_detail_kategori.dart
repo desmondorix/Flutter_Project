@@ -129,9 +129,9 @@ class _update_kategori_detailState extends State<update_kategori_detail> {
               size: 35,
             ),
             onPressed: () {
-              Navigator.pop(
+              Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
-            },
+                  },
           ),
         ],
       ),

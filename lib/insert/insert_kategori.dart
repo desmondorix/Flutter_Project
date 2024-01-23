@@ -74,9 +74,8 @@ class _insertkategoriState extends State<insertkategori> {
           IconButton(
             icon: Icon(Icons.home, color: Colors.black, size: 35,),
             onPressed: () {
-              Navigator.pop(
-                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: ""))
-              );
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
             },
           ),
         ],

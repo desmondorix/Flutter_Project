@@ -9,6 +9,7 @@ import 'dart:async';
 import 'dart:io';
 
 import '../main.dart';
+import '../pages/admin_page.dart';
 import '../view/admin_detail_kategori.dart';
 import '../view/kategori.dart';
 
@@ -101,8 +102,8 @@ class _insertdetailkState extends State<insertdetailk> {
               size: 35,
             ),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => MainPage_admin(token: "")));
             },
           ),
         ],
